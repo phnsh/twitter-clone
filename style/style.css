@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
+body {
+	background-image: url("../img/background.png");
+	margin: 0;
+	font-family: Roboto, sans-serif;
+}
+
+header {
+	padding: 10px 20px;
+	background-color: white;
+	margin: 0;
+}
+
+#logo {
+	margin: auto;
+}
+
+#rightImg {
+	/*border: 2px solid black; */
+	text-align: right;
+	margin-top: 150px;
+}
+
+#listItems {
+	/* border: 2px solid black; */
+	height: 500px;
+	vertical-align: middle;
+	position: absolute;
+	display: table;
+	font-weight: 400;
+}
+
+
+#ulStyle {
+	display: table-cell;
+	vertical-align: middle;
+	list-style: none;
+	font-size: 20px;
+	color: #fff;
+	padding-top: 160px;
+	text-align: left;
+}
+
+#liStyle {
+	padding: 20px;
+}
+
+
+li > img {
+	/*border: 1px solid black; */
+	width: 40px;
+	padding-right: 10px;
+}
+
+footer {
+	background-color: #0d7d9b;
+	padding: 20px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	color: #fff;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#footerUL {
+	list-style: none;
+	padding: 0;
+}
+
+#footerUL > li {
+	display: inline;
+	padding: 10px;
+}
+
+#world {
+	font-weight: lighter;
+	padding-top: 40px;
+	font-weight: 300;
+	font-size: 30px;
+	padding-left: 15px;
+}
+
+#joinTwitter {
+	padding-left: 15px;
+	padding-top: 30px;
+	font-size: 25px;
+	font-weight: bold;
+}
+
+#buttons {
+	background-color: Transparent;
+	margin-left: 15px;
+	margin-top: 40px;
+    border: 2px solid #fff;
+    padding: 10px 45px;
+    color: #fff;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#buttons:hover {
+	background-color: #80D0EC;
+	
+}
