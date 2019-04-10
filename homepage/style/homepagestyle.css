@@ -15,6 +15,7 @@ header {
 	right: 0;
 	display: flex;
 	justify-content: space-evenly;
+	box-shadow: 0 7px 10px -9px black;
 }
 
 header > div {
