@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style/profilepage.css">
+</head>
+
+<body>
+	<header>
+		<div>
+			<div><img src="img/home_logo.png"></div>
+			<div>
+				<div style="
+					margin-top: 7px;">Home</div>
+			</div>
+		</div>
+		<div>
+			<img src="img/birdicon.png">
+		</div>
+		<div>
+			<div><img src="img/rightprofile.png"></div>
+			<div>
+				<button class="logoutButton">
+					Logout
+				</button>
+			</div>
+		</div>
+	</header>
+
+<!-- COVER PHOTO -->
+<div class="coverphotocontainer">
+
+</div>
+
+<div class="coverbar">
+	<div class="coverBarContents">
+		<div class="coverProfilePhoto"></div>
+		<div>
+			<div class="coverMeta">
+				<div class="columnMeta" style="cursor: pointer; display: inline;" onclick="showRightContainer()">
+					<span class="bannerMeta" style="color: #1DABDD">Tweets</span>
+					<br>
+					<span class="bannerMetaNumbers" style="color: #1DABDD">23</span>
+				</div>
+				<div class="columnMeta" style="cursor: pointer; display: inline;" onclick="hideRightContainer()">
+					<span class="bannerMeta">Following</span>
+					<br>
+					<span class="bannerMetaNumbers">345</span>
+				</div>
+				<div class="columnMeta">
+					<span class="bannerMeta">Followers</span>
+					<span class="bannerMetaNumbers">548</span>
+				</div>
+			</div>
+		</div>
+		<div>
+			<button class="logoutButton" style="margin-top: 25px; margin-right: 150px;">
+				Edit Profile
+			</button>
+		</div>
+	</div>
+</div>
+<!-- -->
+
+	<div class="container">
+		<aside>
+		<div class="leftcontainer">
+
+			<div class="personalInfo">
+				<span style="font-size: 20px; font-weight: bold;">Username
+					<br>
+					<span style="font-size: 18px; font-weight: lighter; color: #828282;">
+						@handle
+					</span>
+				</span>
+
+				<span>
+					<img src="img/location.png" class="personalInfoIcons">
+					<span class="personalInfodata">Location</span>
+				</span>
+				<span>
+					<img src="img/webaddress.png" class="personalInfoIcons">
+					<span class="personalInfodata">www.example.com</span>
+				</span>
+				<span>
+					<img src="img/joined.png" class="personalInfoIcons">
+					<span class="personalInfodata">Joined September 2018</span>
+				</span>
+				<span>
+					<img src="img/dob.png" class="personalInfoIcons">
+					<span class="personalInfodata">Born September 20, 1991</span>
+				</span>
+			</div>
+			
+			<div class="photosAndVideoscontainer">
+				<span style="font-weight: bold; font-size: 15px; border-bottom: 1px solid #C4C5C6;">Photos and videos</span>
+				<div class="photosAndVideos">
+					<div class="mediaSquare"></div>
+					<div class="mediaSquare"></div>
+					<div class="mediaSquare"></div>
+					<div class="mediaSquare"></div>
+					<div class="mediaSquare"></div>
+					<div class="mediaSquare"></div>
+					<div class="mediaSquare"></div>
+					<div class="mediaSquare"></div>
+					<div class="mediaSquare"></div>
+				</div>
+			</div>
+			
+			<!--div class="lefttop">
+				<div>
+					<div class="banner"></div>
+						<div class="profilepic">
+							<div><img src="img/profile.png"></div>
+						<div>
+							<span>Username</span>
+							<br>
+							<span style="color: grey;">@handle</span>
+						</div>
+					</div>
+					<div class="followingInfo">
+						<div>Tweets
+							<br>
+							<span>23</span>
+						</div>
+						<div>Following
+							<br>
+							<span>234</span>
+						</div>
+						<div>Followers
+							<br>
+							<span>345</span>
+						</div>
+					</div>
+				</div>
+			</div -->
+			
+			<div class="leftmid">
+				<div>
+					<span style="font-weight: bold; font-size: 15px;">
+						Who to follow
+					</span>
+					<span style="font-size: 13px; margin: 38px;">
+						Refresh
+					</span>
+					<span style="font-size: 13px;">
+						View All
+					</span>
+				</div>
+				<div class="leftmidmid">
+					<div class="smallicons">
+						<div class="ppimage"></div>
+						<div>
+							<span id="username">
+								username
+							</span>
+							<span id="handle">
+								@handle
+							</span>
+							<br>
+							<button id="smallFollowButton">Follow</button>
+						</div>
+					</div>
+
+					<div class="smallicons">
+						<div class="ppimage"></div>
+						<div>
+							<span id="username">
+								username
+							</span>
+							<span id="handle">
+								@handle
+							</span>
+							<br>
+							<button id="smallFollowButton">Follow</button>
+						</div>
+					</div>
+
+					<div class="smallicons">
+						<div class="ppimage"></div>
+						<div>
+							<span id="username">
+								username
+							</span>
+							<span id="handle">
+								@handle
+							</span>
+							<br>
+							<button id="smallFollowButton">Follow</button>
+						</div>
+					</div>
+				</div>
+				<div class="leftmidmidfooter">
+					<span style="color: #828282;">
+						Find people you know
+					</span>
+				</div>
+			</div>
+			
+			<div class="leftbottom">
+				<span>
+					&copy 2019 Twitter
+				</span>			
+				<span>
+					<a href="aboutme/aboutme.html" style="text-decoration: none; color: #828282;">
+						About Me
+					</a>
+				</span>
+			</div>
+
+			<div></div>
+		</div>
+
+<!-----------------------------------JavaScript------------------------------------------->
+<script>
+	function hideRightContainer() {
+		document.getElementById("rightcontainerFollowing").style.display = "inline";
+		document.getElementsByClassName("rightcontainer")[0].style.display = "none";
+		document.getElementsByClassName("bannerMeta")[1].style.color = "#1DABDD";
+		document.getElementsByClassName("bannerMetaNumbers")[1].style.color = "#1DABDD";
+		document.getElementsByClassName("bannerMeta")[0].style.color = "#8C8C8C";
+		document.getElementsByClassName("bannerMetaNumbers")[0].style.color = "#8C8C8C";
+	}
+
+	function showRightContainer() {
+		document.getElementsByClassName("rightcontainer")[0].style.display="inline";
+		document.getElementById("rightcontainerFollowing").style.display="none";
+		document.getElementsByClassName("bannerMeta")[0].style.color = "#1DABDD";
+		document.getElementsByClassName("bannerMetaNumbers")[0].style.color = "#1DABDD";
+		document.getElementsByClassName("bannerMeta")[1].style.color = "#8C8C8C";
+		document.getElementsByClassName("bannerMetaNumbers")[1].style.color = "#8C8C8C";
+	}
+</script>
+<!-----------------------------------JavaScript------------------------------------------->
+
+	</aside>
+
+		<div class="rightcontainer">
+			<div class="whatshappening">
+				<div class="ppimage"></div>
+				<div class="tweetbar">
+					<div>
+						<input type="text" name="tweetfield" placeholder="What's happening?" class="tweetTextBox">
+					</div>
+				</div>
+			</div>
+
+			<div class="rightbottom">
+
+				<div class="indposts">
+					<div class="ppimage"></div>
+					<div class="postcontent">
+						<div class="namehandle">
+							<span>Username,</span>
+							<span>@handle • </span>
+							<span>5m</span>
+							<span></span>
+						</div>
+						<div class="tweetbody">
+							<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+							</span>
+						</div>
+						<div class="postInteractions">
+							<div class="comments">hjkbjk</div>
+							12
+							<div class="likes"></div>5
+						</div>
+					</div>
+				</div>
+
+
+				<div class="indposts">
+					<div class="ppimage"></div>
+					<div class="postcontent">
+						<div class="namehandle">
+							<span>Username,</span>
+							<span>@handle •</span>
+							<span>30m</span>
+							<span></span>
+						</div>
+						<div class="tweetbody">
+							<span>Meet Scotty
+							</span>
+							<div class="tweetbodyMedia">
+								<img src="img/scotty.png">
+							</div>
+						</div>
+						<div class="postInteractions">
+							<div class="comments">hjkbjk</div>
+							10
+							<div class="likes"></div>50
+						</div>
+					</div>
+				</div>
+
+				<div class="indposts">
+					<div class="ppimage"></div>
+					<div class="postcontent">
+						<div class="namehandle">
+							<span>Username,</span>
+							<span>@handle •</span>
+							<span>1h</span>
+							<span></span>
+						</div>
+						<div class="tweetbody">
+							<span>Analytics
+							</span>
+							<div class="tweetbodyMedia">
+								<img src="img/dashboard.png">
+								<img class="playicon" src="img/play.png">
+							</div>
+						</div>
+						<div class="postInteractions">
+							<div class="comments">hjkbjk</div>
+							10
+							<div class="likes"></div>50
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="rightcontainerFollowing" style="display: none;">
+			<div style="text-align: center;">
+				<img src="img/search2.png" style="position: absolute; height: 20px; margin-top: 7px; margin-left: 5px;">
+				<input type="text" name="followingSearch" placeholder="Search" class="followingSearchStyle" style="
+				padding-left: 30px;
+				box-shadow: 1px 6px 15px -8px black;
+				">
+			</div>
+			<div class="followingCardsContainer">
+				<div class="followingCards">
+					<div>
+							<div class="followingCardsBanner"></div>
+								<div class="profilepic">
+									<img src="img/profile.png" height="90px">
+								<div class="cardMeta">
+									<div class="userMeta">
+										<span>Username</span>
+										<span>@handle</span>
+									</div>
+									<div><span class="biodata" style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span></div>
+								</div>
+							</div>
+					</div>
+				</div>
+
+				<div class="followingCards">
+					<div>
+							<div class="followingCardsBanner"></div>
+								<div class="profilepic">
+									<img src="img/profile.png" height="90px">
+								<div class="cardMeta">
+									<div class="userMeta">
+										<span>Username</span>
+										<span>@handle</span>
+									</div>
+									<div><span class="biodata" style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span></div>
+								</div>
+							</div>
+					</div>
+				</div>
+
+				<div class="followingCards">
+					<div>
+							<div class="followingCardsBanner"></div>
+								<div class="profilepic">
+									<img src="img/profile.png" height="90px">
+								<div class="cardMeta">
+									<div class="userMeta">
+										<span>Username</span>
+										<span>@handle</span>
+									</div>
+									<div><span class="biodata" style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span></div>
+								</div>
+							</div>
+					</div>
+				</div>
+
+				<div class="followingCards">
+					<div>
+							<div class="followingCardsBanner"></div>
+								<div class="profilepic">
+									<img src="img/profile.png" height="90px">
+								<div class="cardMeta">
+									<div class="userMeta">
+										<span>Username</span>
+										<span>@handle</span>
+									</div>
+									<div><span class="biodata" style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span></div>
+								</div>
+							</div>
+					</div>
+				</div>
+
+				<div class="followingCards">
+					<div>
+							<div class="followingCardsBanner"></div>
+								<div class="profilepic">
+									<img src="img/profile.png" height="90px">
+								<div class="cardMeta">
+									<div class="userMeta">
+										<span>Username</span>
+										<span>@handle</span>
+									</div>
+									<div><span class="biodata" style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span></div>
+								</div>
+							</div>
+					</div>
+				</div>
+
+				<div class="followingCards">
+					<div>
+							<div class="followingCardsBanner"></div>
+								<div class="profilepic">
+									<img src="img/profile.png" height="90px">
+								<div class="cardMeta">
+									<div class="userMeta">
+										<span>Username</span>
+										<span>@handle</span>
+									</div>
+									<div><span class="biodata" style="font-size: 15px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span></div>
+								</div>
+							</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+</body>
+
+</html>
