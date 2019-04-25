@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+/* https://fsd1.herokuapp.com/users/1/details */
+
 body {
 	background-color: #E7EFEF;
 	font-family: Roboto, sans-serif;
@@ -49,7 +51,7 @@ header div:nth-child(3) {
 	display: flex;
 	justify-content: center;
 	margin-top: 90px;
-  	
+  	flex-wrap: wrap;
   	align-items: flex-start;
 }
 
@@ -85,13 +87,20 @@ header div:nth-child(3) {
 }
 
 .banner {
-	background-color: lightgrey;
-	height: 120px;
+	/*background-color: lightgrey; *//*<-this*/
+	/* height: 120px;
+	width: 500px; */
 	border-radius: 15px;
 }
 
+.banner img {
+	height: 120px;
+	width: 270px;
+	border-radius: 10px;
+}
+
 .leftmid {
-	height: 240px;
+	/*height: 240px;*/
 	/*border: 2px solid yellow; */
 	display: flex;
 	flex-direction: column;
@@ -160,9 +169,9 @@ header div:nth-child(3) {
 	padding-top: 8px;
 }
 
-.ppimage {
+/* .ppimage {
 	content: url("../img/rightprofile.png");
-}
+} */
 
 .smallicons div {
 	
@@ -179,6 +188,7 @@ header div:nth-child(3) {
 	border-top: 1px solid lightgrey;
 	align-items: flex-start;
 	height: 60px;
+	padding: 5px;
 }
 
 .whatshappening {
@@ -217,7 +227,7 @@ header div:nth-child(3) {
 	flex-direction: column;
 	/*border: 2px solid red;*/
 	margin-top: 15px;
-	box-shadow: 0 7px 10px -4px black;
+	box-shadow: 0 7px 10px -10px black;
 }
 
 .indposts {
@@ -240,8 +250,9 @@ header div:nth-child(3) {
 	margin-left: 15px;
 }
 
-.namehandle span:nth-child(3) {
-	
+.namehandle span:nth-child(2) {
+	padding-left: 5px;
+	font-size: 16px;
 }
 
 .namehandle span:nth-child(4) {
@@ -261,6 +272,7 @@ header div:nth-child(3) {
 	flex-direction: column;
 	margin-left: 15px;
 	padding: 5px 0 5px 0;
+	font-size: 14px;
 }
 
 .tweetbodyMedia {
@@ -279,13 +291,32 @@ header div:nth-child(3) {
 
 .comments {
 	display: flex;
-	content: url("../img/replies.png");
+}
+
+.comments span {
+	padding-left: 5px;
+	color: #828282;
+	font-size: 11px;
 }
 
 .likes {
-	margin-left: 30px;
+	margin-left: 40px;
 	display: flex;
-	content: url("../img/likes.png");	
+}
+
+.likes span {
+	padding-left: 5px;
+	color: #828282;
+}
+
+.retweets {
+	margin-left: 40px;
+	display: flex;
+}
+
+.retweets span {
+	padding-left: 5px;
+	color: #828282;
 }
 
 .playicon {
@@ -299,6 +330,8 @@ header div:nth-child(3) {
 
 #handle {
 	font-size: 15px;
+	margin-left: 5px;
+	color: #828282;
 }
 
 #smallFollowButton {
@@ -311,9 +344,8 @@ header div:nth-child(3) {
 	color: #18ADDE;
 	border-radius: 12px;
 	font-weight: bold;
-	margin-top: 10px;
 	font-size: 14px;
-	margin-top: 5px;
+	margin-top: 10px;
 }
 
 #smallFollowButton:hover {
