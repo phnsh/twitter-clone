@@ -77,8 +77,7 @@ header div:nth-child(3) {
 }
 
 .coverProfilePhoto { /*large profile picture in the banner*/
-	content: url("../img/profilelarge.png");
-	height: 120px;
+	/*content: url("../img/profilelarge.png");*/
 	margin-top: -50px;
 	margin-left: 120px;
 }
@@ -138,6 +137,7 @@ header div:nth-child(3) {
 	/* border: 1px solid black; */
 	margin: 5px;
 	margin-top: 10px;
+	border-radius: 5px;
 }
 
 #rightcontainerFollowing {
@@ -163,29 +163,45 @@ header div:nth-child(3) {
 	/* border: 2px solid black; */
 	padding: 5px;
 	margin-top: 20px;
+	display: flex;
 	flex-wrap: wrap;
+	flex-direction: column;
 	box-shadow: 5px 8px 15px -8px black;
 }
 
 .followingCardsBanner {
-	background-color: #DBDCDD;
-	height: 80px;
 	border-radius: 10px;
 }
 
-.profilepic > img {
-	height: 90px;
+.followingCardsBanner img {
+	width: 300px;
+	height: 80px;
+}
+
+.profilepic {
+	display: flex;
+	flex-direction: row;
+}
+
+.profilepic img {
+	width: 35px;
+	height: 35px;
 }
 
 .cardMeta {
 	display: flex;
 	flex-wrap: wrap;
-
 }
 
 .userMeta {
 	display: flex;
 	flex-direction: column;
+}
+
+.userBio {
+	margin-top: 20px;
+	color: #828282;
+	margin-left: 5px;
 }
 
 .userMeta span:nth-child(1) {
@@ -275,7 +291,7 @@ header div:nth-child(3) {
 }
 
 .leftmid {
-	height: 240px;
+	
 	/*border: 2px solid yellow; */
 	display: flex;
 	flex-direction: column;
@@ -299,13 +315,6 @@ header div:nth-child(3) {
 	font-size: 15px;
 	box-shadow: 0 7px 10px -7px black;
 }
-
-.profilepic {
-	display: flex;
-	height: 100px;
-}
-
-
 
 .profilepic img {
 	margin-top: -20px;
@@ -362,6 +371,7 @@ header div:nth-child(3) {
 	border-top: 1px solid lightgrey;
 	align-items: flex-start;
 	height: 60px;
+	padding: 5px;
 }
 
 .whatshappening {
@@ -400,7 +410,7 @@ header div:nth-child(3) {
 	flex-direction: column;
 	/*border: 2px solid red;*/
 	margin-top: 15px;
-	box-shadow: 0 7px 10px -4px black;
+	box-shadow: 0 7px 10px -9px black;
 }
 
 .indposts {
@@ -415,6 +425,7 @@ header div:nth-child(3) {
 
 .namehandle {
 	color: #828282;
+
 }
 
 .namehandle span:nth-child(1) {
@@ -423,8 +434,8 @@ header div:nth-child(3) {
 	margin-left: 15px;
 }
 
-.namehandle span:nth-child(3) {
-	
+.namehandle span:nth-child(2) {
+	padding-left: 10px;
 }
 
 .namehandle span:nth-child(4) {
@@ -457,18 +468,28 @@ header div:nth-child(3) {
 	font-size: 12px;
 	align-items: flex-start;
 	margin-left: 15px;
-	padding: 3px 0 3px 0;
+	margin-top: 15px;
+	padding: 0;
 }
 
 .comments {
 	display: flex;
-	content: url("../img/replies.png");
+	color: #828282;
+}
+
+.comments span {
+
 }
 
 .likes {
 	margin-left: 30px;
 	display: flex;
-	content: url("../img/likes.png");	
+	color: #828282;
+}
+
+.retweets {
+	margin-left: 30px;
+	color: #828282;
 }
 
 .playicon {
@@ -482,6 +503,8 @@ header div:nth-child(3) {
 
 #handle {
 	font-size: 15px;
+	padding-left: 5px;
+	color: #928482;
 }
 
 #smallFollowButton {
@@ -496,7 +519,7 @@ header div:nth-child(3) {
 	font-weight: bold;
 	margin-top: 10px;
 	font-size: 14px;
-	margin-top: 5px;
+	margin-top: 10px;
 }
 
 #smallFollowButton:hover {
