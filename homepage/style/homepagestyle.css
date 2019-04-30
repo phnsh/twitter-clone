@@ -51,12 +51,11 @@ header div:nth-child(3) {
 	display: flex;
 	justify-content: center;
 	margin-top: 90px;
-  	flex-wrap: wrap;
   	align-items: flex-start;
 }
 
 .leftcontainer {
-	width: 280px;
+	/*width: 280px;*/
 	/* border: 2px solid blue; */
 	display: flex;
 	flex-direction: column;
@@ -64,11 +63,12 @@ header div:nth-child(3) {
 
 
 .rightcontainer {
-	width: 700px;
+/*	width: 700px;*/
 	margin-left: 30px;
 	/* border: 2px solid green; */
 	display: flex;
 	flex-direction: column;
+	float: right;
 }
 
 .lefttop {
@@ -79,7 +79,7 @@ header div:nth-child(3) {
 	/* border: 2px solid blue; */
 	background-color: #fff;
 	border-radius: 15px;
-	box-shadow: 0 7px 10px -7px black;
+	box-shadow: 0 7px 10px -8px black;
 }
 
 .lefttop div {
@@ -95,7 +95,7 @@ header div:nth-child(3) {
 
 .banner img {
 	height: 120px;
-	width: 270px;
+	width: 280px;
 	border-radius: 10px;
 }
 
