@@ -150,7 +150,7 @@ var mediaSquare = function() {
 	var photosAndVideos = document.querySelector(".photosAndVideos");
 	div = '';
 	for(var i = 0; i < 9; i++) {
-		var div = div + `<div class="mediaSquare">${i}</div>`;
+		var div = div + `<div class="mediaSquare"></div>`;
 	}
 	photosAndVideos.innerHTML = div;
 }
