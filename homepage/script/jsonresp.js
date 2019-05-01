@@ -28,7 +28,7 @@ var updateSuggestions = function() {
 	var div = '';
 	var leftmidmid = document.querySelector(".leftmidmid");
 	for(var i in data) {
-		var div = `<div class="smallicons">
+		var div = div + `<div class="smallicons">
 						<div class="ppimage">
 							<img src="${data[i].profile_img}">
 						</div>
@@ -43,7 +43,7 @@ var updateSuggestions = function() {
 								<button id="smallFollowButton">Follow</button>
 							</div>
 						</div>
-					</div>` + div;
+					</div>`;
 	}
 	leftmidmid.innerHTML = div;
 }
@@ -53,7 +53,7 @@ var tweetContent = function() {
 	var div = '';
 	var rightbottom = document.querySelector(".rightbottom");
 	for(var i in data) {
-		var div = `<div class="indposts">
+		var div = div + `<div class="indposts">
 						<div class="ppimage">
 							<img src="${data[i].user.profile_img}"">
 						</div>
@@ -84,7 +84,7 @@ var tweetContent = function() {
 								</div>
 							</div>
 						</div>
-					</div>` + div;
+					</div>`;
 	}
 	rightbottom.innerHTML = div;
 }
