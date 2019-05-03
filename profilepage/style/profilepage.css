@@ -507,9 +507,93 @@ header div:nth-child(3) {
 }
 
 #handle {
-	font-size: 15px;
-	padding-left: 5px;
+	font-size: 13px;
 	color: #928482;
+}
+
+.modal {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	background-color: rgb(0,0,0,0.6);
+}
+
+.modalContent {
+	height: 80vh;
+	margin-top: 5%;
+	margin-left: 30%;
+	margin-right: 30%;
+	border-radius: 20px;
+	background-color: #fff;
+	padding: 20px;
+}
+
+.modalContent {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.modalContent > div > span {
+	font-size: 35px;
+	font-weight: bold;
+}
+
+.modalContent div:nth-child(3) {
+
+}
+
+.modalContent div:nth-child(3) button {
+	height: 40px;
+	width: 150px;
+	margin: 10px;
+}
+
+.modalContent div:nth-child(3) button:nth-child(1) {
+	border: 2px solid #1dcaff;
+	background-color: #fff;
+	color: #1dcaff;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.modalContent div:nth-child(3) button:nth-child(1):hover {
+	background-color: #eaf5fd;
+}
+
+.modalContent div:nth-child(3) button:nth-child(2):hover {
+	background-color: #006dbf;
+}
+
+.modalContent div:nth-child(3) button:nth-child(2) {
+	border: none;
+	background-color: #1dcaff;
+	color: #fff;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 20px; 
+	cursor: pointer;
+}
+
+#editProfileForm {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin-top: 30px;
+}
+
+.editProfileInput {
+	border-radius: 20px;
+	border-style: none;
+	background-color: #f2f2f2f2;
+	padding: 10px;
+	margin-top: 5px;
+	margin: 15px;
 }
 
 #smallFollowButton {

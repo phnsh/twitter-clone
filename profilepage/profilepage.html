@@ -55,7 +55,7 @@
 			</div>
 		</div>
 		<div>
-			<button class="logoutButton" style="margin-top: 25px; margin-right: 150px;">
+			<button class="logoutButton" style="margin-top: 25px; margin-right: 150px;" onclick="displayEditProfile()">
 				Edit Profile
 			</button>
 		</div>
@@ -164,6 +164,28 @@
 
 			</div>
 		</div>
+
+		<div class="modal">
+			<div class="modalContent">
+				<div>
+					<span>Edit your profile</span>
+				</div>
+				<form name="editProfileForm" id="editProfileForm">
+					<input type="name" name="fullname" class="editProfileInput" placeholder="desired name">
+					<input type="email" name="email" class="editProfileInput" placeholder="email address">
+					<input type="email" name="handle" class="editProfileInput" placeholder="desired handle">
+					<input type="email" name="location" class="editProfileInput" placeholder="location">
+					<input type="email" name="email" class="editProfileInput" placeholder="URL">
+					<div style="font-size: 15px;">Birthday: <input type="date" name="birthday" class="editProfileInput"></div>
+					<div style="font-size: 15px;">Cover image: <input type="file" name="birthday" class="editProfileInput"></div>
+					<div style="font-size: 15px;">Profile picture: <input type="file" name="birthday" class="editProfileInput"></div>
+				</form>
+				<div style="position: absolute; bottom: 10px; padding: 10px;">
+					<button onclick="closeEditProfile()">Cancel</button>
+					<button onclick="closeEditProfile()">Save</button>
+				</div>
+			</div>
+		</div>
 </body>
 
 <script>
@@ -174,6 +196,14 @@
 		document.getElementsByClassName("bannerMetaNumbers")[first].style.color = "#1DABDD";
 		document.getElementsByClassName("bannerMeta")[second].style.color = "#8C8C8C";
 		document.getElementsByClassName("bannerMetaNumbers")[second].style.color = "#8C8C8C";
+	}
+
+	function closeEditProfile() {
+		document.querySelector(".modal").style.display = "none";
+	}
+
+	function displayEditProfile() {
+		document.querySelector('.modal').style.display = "inline";
 	}
 </script>
 

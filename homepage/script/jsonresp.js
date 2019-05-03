@@ -27,8 +27,8 @@ var updateSuggestions = function() {
 	var data = this.data;
 	var div = '';
 	var leftmidmid = document.querySelector(".leftmidmid");
-	for(var i in data) {
-		var div = div + `<div class="smallicons">
+	for(var i = 0; i < data.length && i < 3; i++) {
+		div = div + `<div class="smallicons">
 						<div class="ppimage">
 							<img src="${data[i].profile_img}">
 						</div>
