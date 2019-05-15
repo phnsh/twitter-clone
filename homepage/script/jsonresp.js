@@ -1,19 +1,37 @@
-var urls = ["https://fsd1.herokuapp.com/users/1/details",
+let urls = ["https://fsd1.herokuapp.com/users/1/details",
 "https://fsd1.herokuapp.com/users/1/followers/suggestions",
 "https://fsd1.herokuapp.com/users/1/following/tweets"];
 
-var consolidate = urls.map(url => fetch(url).then(res => res.json()));
-Promise.all(consolidate).then(res => acceptURLs.call(res));
+resolveData(...urls);
 
-var acceptURLs = function() {
-	updateDOM.apply(this[0]);
+//function to accept destructured array of any lenght and send it to resolve() to get it resolved
+async function resolveData(...urls) {
+	let result = await resolve(...urls);
+}
+
+//function to receive the urls for futher processing
+function resolve(...urls) {
+	let fetchData = urls.map(url => fetch(url).then(d => d.json()));
+	let result = Promise.all(fetchData).then(res => resolvedUrls.call(res)); //sent to resolvedUrls()
+	result.then(res => acceptURLs.call(res)); //resolved data in the form of an array
+}
+
+
+//URLs get resolved here
+function resolvedUrls() {
+	return this;
+}
+
+let acceptURLs = function() {
+	updateUserInfo.apply(this[0]);
 	updateSuggestions.apply(this[1]);
 	tweetContent.apply(this[2]);
 }
 
-var updateDOM = function() {
+//function to update users info
+let updateUserInfo = function() {
 	//console.log(this.data.user_name);
-	var data = this.data;
+	let data = this.data;
 	querySelectorImg("div.banner img", data.cover_img);
 	querySelectorInnerHTML("span.USERNAME", data.full_name);
 	querySelectorInnerHTML("span.HANDLE", "@" + data.user_name);
@@ -23,12 +41,13 @@ var updateDOM = function() {
 	querySelectorImg("div.profilepic img", data.profile_img);
 }
 
-var updateSuggestions = function() {
-	var data = this.data;
-	var div = '';
-	var leftmidmid = document.querySelector(".leftmidmid");
+//updating the foollow suggestions
+let updateSuggestions = function() {
+	let data = this.data;
+	let div = '';
+	let leftmidmid = document.querySelector(".leftmidmid");
 	for(var i = 0; i < data.length && i < 3; i++) {
-		div = div + `<div class="smallicons">
+		div += `<div class="smallicons">
 						<div class="ppimage">
 							<img src="${data[i].profile_img}">
 						</div>
@@ -48,12 +67,13 @@ var updateSuggestions = function() {
 	leftmidmid.innerHTML = div;
 }
 
-var tweetContent = function() {
-	var data = this.data;
-	var div = '';
-	var rightbottom = document.querySelector(".rightbottom");
+//filling the content of the tweets
+let tweetContent = function() {
+	let data = this.data;
+	let div = '';
+	let rightbottom = document.querySelector(".rightbottom");
 	for(var i in data) {
-		var div = div + `<div class="indposts">
+		div += `<div class="indposts">
 						<div class="ppimage">
 							<img src="${data[i].user.profile_img}"">
 						</div>
@@ -89,12 +109,13 @@ var tweetContent = function() {
 	rightbottom.innerHTML = div;
 }
 
+//function to target queryselector and to target a picture below
 function querySelectorInnerHTML(target, data) {
-	var container = document.querySelector(target);
+	let container = document.querySelector(target);
 	container.innerHTML = data;
 }
 
 function querySelectorImg(target, data) {
-	var container = document.querySelector(target);
+	let container = document.querySelector(target);
 	container.src = data;
 }

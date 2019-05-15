@@ -95,7 +95,7 @@ header div:nth-child(3) {
 
 .banner img {
 	height: 120px;
-	width: 280px;
+	width: 100%;
 	border-radius: 10px;
 }
 

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flipkart</title>
+	<link rel="stylesheet" type="text/css" href="style/flipkart.css">
+</head>
+<body>
+	<header>
+		<img src="img/logo.png">
+	</header>
+	<div class="cart" onclick="checkoutArea()">
+		<img src="img/cart.png">
+		<span id="noOfItems"></span>
+	</div>
+
+	<section>
+		<div class="container">
+			<div class="items">
+				<img src="img/mouse.jpeg">
+				<div class="itemsContent">
+					<span class="productName">Mouse</span>
+					<br>
+					Rs.<span class="price">1599</span>
+					<br>
+					<button class="addToCardButton" onclick="getthis(this)">Add to Cart</button>
+				</div>
+			</div>
+			<div class="items">
+				<img src="img/bag.jpeg">
+				<div class="itemsContent">
+					<span class="productName">Bag</span>
+					<br>
+					Rs.<span class="price">2999</span>
+					<br>
+					<button class="addToCardButton" onclick="getthis(this)">Add to Cart</button>
+				</div>
+			</div>
+			<div class="items">
+				<img src="img/watch.jpg">
+				<div class="itemsContent">
+					<span class="productName">Watch</span>
+					<br>
+					Rs.<span class="price">1999</span>
+					<br>
+					<button class="addToCardButton" onclick="getthis(this)">Add to Cart</button>
+				</div>
+			</div>
+			<div class="items">
+				<img src="img/btaux.jpeg">
+				<div class="itemsContent">
+					<span class="productName">Bluetooth Aux</span>
+					<br>
+					Rs.<span class="price">1590</span>
+					<br>
+					<button class="addToCardButton" onclick="getthis(this)">Add to Cart</button>
+				</div>
+			</div>
+			<div class="items">
+				<img src="img/headphone.jpeg">
+				<div class="itemsContent">
+					<span class="productName">Headphones</span>
+					<br>
+					Rs.<span class="price">1699</span>
+					<br>
+					<button class="addToCardButton" onclick="getthis(this)">Add to Cart</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal">
+			<div class="modalContent">
+				<span style="display: block;">Checkout</span>
+				<span></span>
+				<span id="checkoutItems"></span>
+				<div>
+					<button id="exitButton" onclick="exitCheckOutArea()">Exit</button>
+				</div>
+				<span class="selectContainer">
+					Select the delivery destination state - 
+					<select id="deliveryCharges" onchange="calcDelCharges('deliveryCharges')">
+						<option value="none"></option>
+						<option value="ap">Andhra Pradesh</option>
+						<option value="tl">Telangana</option>
+						<option value="tn">Tamil Nadu</option>
+						<option value="kl">Kerala</option>
+						<option value="ka">Karnataka</option>
+						<option value="mh">Maharastra</option>
+					</select>
+					<span>Total</span>
+					<span></span>
+				</span>
+			</div>
+		</div>
+
+	</section>
+	</body>
+	<script type="text/javascript" src="script/flip.js"></script>
+</html>

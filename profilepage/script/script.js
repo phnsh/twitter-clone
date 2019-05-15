@@ -3,18 +3,34 @@ var urls = ["https://fsd1.herokuapp.com/users/1/details",
 "https://fsd1.herokuapp.com/users/1/followers/suggestions",
 "https://fsd1.herokuapp.com/users/1/following"];
 
-var consolidate = urls.map(url => fetch(url).then(res => res.json()));
-Promise.all(consolidate).then(data => acceptURLs.call(data));//.then(res => console.log(res));
+resolveData(...urls);
 
-var acceptURLs = function() {
-	updateDetails.apply(this[0]);
+//function to accept destructured array of any lenght and send it to resolve() to get it resolved
+async function resolveData(...urls) {
+	let result = await resolve(...urls);
+}
+
+//function to receive the urls for futher processing
+function resolve(...urls) {
+	let fetchData = urls.map(url => fetch(url).then(d => d.json()));
+	let result = Promise.all(fetchData).then(res => resolvedUrls.call(res)); //sent to resolvedUrls()
+	result.then(res => acceptURLs.call(res)); //resolved data in the form of an array
+}
+
+//URLs get resolved here
+function resolvedUrls() {
+	return this;
+}
+
+let acceptURLs = function() {
+	updateUserInfo.apply(this[0]);
 	tweetContent.apply(this[1]);
 	updateSuggestions.apply(this[2]);
 	followingContent.apply(this[3]);
 }
 
-var updateDetails = function() {
-	var data = this.data;
+let updateUserInfo = function() {
+	let data = this.data;
 	querySelectorImg(".coverProfilePhoto img", data.profile_img);
 	querySelectorInnerHTML(".personalInfo span:nth-child(1)", data.full_name);
 	querySelectorInnerHTML(".personalInfo span:nth-child(3)", "@" + data.user_name);
@@ -31,12 +47,12 @@ var updateDetails = function() {
 
 }
 
-var updateSuggestions = function() {
-	var data = this.data;
-	var div = '';
-	var leftmidmid = document.querySelector(".leftmidmid");
+let updateSuggestions = function() {
+	let data = this.data;
+	let div = '';
+	let leftmidmid = document.querySelector(".leftmidmid");
 	for(var i = 0; i < data.length && i < 3; i++) {
-		div = div + `<div class="smallicons">
+		div += `<div class="smallicons">
 						<div class="ppimage">
 							<img src="${data[i].profile_img}">
 						</div>
@@ -56,12 +72,12 @@ var updateSuggestions = function() {
 	leftmidmid.innerHTML = div;
 }
 
-var tweetContent = function() {
-	var data = this.data;
-	var div = '';
-	var rightbottom = document.querySelector(".rightbottom");
+let tweetContent = function() {
+	let data = this.data;
+	let div = '';
+	let rightbottom = document.querySelector(".rightbottom");
 	for(var i in data) {
-		var div = div + `<div class="indposts">
+		div += `<div class="indposts">
 						<div class="ppimage">
 							<img src="${data[i].user.profile_img}"">
 						</div>
@@ -97,13 +113,12 @@ var tweetContent = function() {
 	rightbottom.innerHTML = div;
 }
 
-var followingContent = function() {
-	var data = this.data;
-	var div = '';
-	var followingCards = document.querySelector(".followingCardsContainer");
+let followingContent = function() {
+	let data = this.data;
+	let div = '';
+	let followingCards = document.querySelector(".followingCardsContainer");
 	for(var i in data) {
-		var div = div + `
-				<div class="followingCards">
+		div += `<div class="followingCards">
 					<div>
 						<div class="followingCardsBanner"><img src="${data[i].cover_img}"></div>
 						<div class="profilepic">
@@ -123,31 +138,31 @@ var followingContent = function() {
 }
 
 function querySelectorInnerHTML(target, data) {
-	var container = document.querySelector(target);
+	let container = document.querySelector(target);
 	container.innerHTML = data;
 }
 
 function querySelectorImg(target, data) {
-	var container = document.querySelector(target);
+	let container = document.querySelector(target);
 	container.src = data;
 }
 
 function querySelectorInnerHTMLAll(target, data, index) {
-	var container = document.querySelectorAll(target)[index];
+	let container = document.querySelectorAll(target)[index];
 	container.innerHTML = data;
 }
 
 function dataConv(UTCSeconds) {
-	var date = new Date(UTCSeconds);
-	var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	var month = months[date.getMonth() + 1];
-	var day = date.getDate();
-	var year = date.getFullYear();
+	let date = new Date(UTCSeconds);
+	let months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	let month = months[date.getMonth() + 1];
+	let day = date.getDate();
+	let year = date.getFullYear();
 	return day + " " + month + " " + year;
 }
 
-var mediaSquare = function() {
-	var photosAndVideos = document.querySelector(".photosAndVideos");
+let mediaSquare = function() {
+	let photosAndVideos = document.querySelector(".photosAndVideos");
 	div = '';
 	for(var i = 0; i < 9; i++) {
 		var div = div + `<div class="mediaSquare"></div>`;
