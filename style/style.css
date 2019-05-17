@@ -31,6 +31,10 @@ header {
 	font-weight: 400;
 }
 
+#signupSubmit {
+	background-color: lightgrey;
+	cursor: default;
+}
 
 #ulStyle {
 	display: table-cell;
@@ -165,4 +169,14 @@ span.close {
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%,-200%);
+}
+
+#loginButton {
+	background-color: #1DABDD;
+	width: 100px;
+}
+
+#loginMessage {
+	display: block;
+	margin-top: 30px;
 }

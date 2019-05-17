@@ -70,17 +70,17 @@
 					<div style="color: white; font-size: 15px;">ADD<br>PHOTO</div>
 				</div>
 
-				<form name="signupform" id="signupform" method="POST">
-					<input type="username" name="username" required id="usernamePlaceholder" placeholder="Username" onchange="validateUsername('username','Username should be more than 5 characters long', 2)">
+				<form name="signupform" id="signupform" method="POST" onsubmit="signupUser()">
+					<input type="username" name="username" required id="usernamePlaceholder" placeholder="Username" onblur="validateUsername('username','Username should be more than 5 characters long', 2)">
 					<span style="display: block;"></span>
-					<input type="email" name="email" placeholder="E-mail" onchange="validateEmail('email', 'Enter a valid email address', 4)">
+					<input type="email" name="email" required placeholder="E-mail" onblur="validateEmail('email', 'Enter a valid email address', 4)">
 					<span style="display: block;"></span>
-					<input type="password" name="password" placeholder="Password" onchange="validatePassword('password', 'Password should be more than 8 characters long', 6)">
+					<input type="password" name="password" placeholder="Password" onblur="validatePassword('password', 'Password should be more than 8 characters long', 6)">
 					<span style="display: block;"></span>
-					<input type="password" name="confirmpassword" placeholder="Confirm Password" onchange="confirmPassword('Passwords not matching',8)">
+					<input type="password" name="confirmpassword" placeholder="Confirm Password" onblur="confirmPassword('Passwords not matching',8)">
 					<span style="display: block;"></span>
 					<br>
-					<button type="submit" id="signupSubmit" style="background-color: lightgrey; cursor: default;">sign up</button>
+					<button type="submit" id="signupSubmit" disabled>sign up</button>
 				</form>
 
 			</div>
@@ -92,95 +92,21 @@
 			<h2 class="modal_heading" style="color: #18ADDE;">Log in to Twitter</h2>
 			<span class="close" onclick="closeDialog()">&#10006;</span>
 			<div class="modal_body">
-				<form method="POST">
-					<input type="username" name="username" placeholder="Username" required minlength="5">
-					<input type="password" name="password" placeholder="Password" required minlength="8">
-					<br>
-					<button type="submit">login</button>
+				<form name="signinform" method="POST">
+					<input type="username" name="username" placeholder="Username" required>
+					<input type="password" name="password" placeholder="Password" required>
+					<span id="loginMessage"></span>
+					<button type="submit" id="loginButton" onclick="loginUser(event)">login</button>
 				</form>
 			</div>
 		</div>
 	</div>
 
-<script type="text/javascript">
-	function displaySignUp() {
-		document.getElementById("signup").style.display="block";
-	}
-
-	function displayLogIn() {
-		document.getElementById("login").style.display="block";	
-	}
-
-	function closeDialog() {
-		document.getElementById("signup").style.display="none";
-		document.getElementById("login").style.display="none";
-	}
-
-
-	var validateUsername = function(inputType, displayWarning, nthChild) {
-		var form = document.forms["signupform"][inputType].value;
-
-		if(form.length < 5) {
-			valildateAll(displayWarning, nthChild);
-		}
-		else {
-			document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = '';
-		}
-	}
-
-	var validateEmail = function(inputType, displayWarning, nthChild) {
-		var form = document.forms["signupform"][inputType].value;
-
-		if(form.length < 5) {
-			valildateAll(displayWarning, nthChild);
-	
-		}
-		else {
-			document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = '';
-		}
-	}
-
-	var validatePassword = function(inputType, displayWarning, nthChild) {
-		var form = document.forms["signupform"][inputType].value;
-
-		if(form.length < 8) {
-			valildateAll(displayWarning, nthChild);
-		}
-		else {
-			document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = '';
-		}
-	}
-
-	var confirmPassword = function(displayWarning, nthChild) {
-		var password = document.querySelector("#signupform input:nth-child(5)").value;
-		var confirm = document.querySelector("#signupform input:nth-child(7)").value;
-
-		if(confirm.length < 8) {
-			valildateAll("Password should be more than 8 characters long", nthChild);
-		}
-		else {
-			document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = '';
-		}
-		if(confirm != password) {
-			valildateAll("Passwords not matching", nthChild);
-		}
-		else {
-			document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = '';
-		}
-	}
-
-	function valildateAll(displayWarning, nthChild) {
-		//document.getElementsByClassName("modal_heading")[0].innerHTML = displayWarning;
-		document.querySelector("#signupform span:nth-child(" + nthChild + ")").style.color = "red";
-		document.querySelector("#signupform span:nth-child(" + nthChild + ")").style.fontSize = "13px";
-		document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = displayWarning;
-	}
-	
+</body>
+<script type="text/javascript" src="script/script.js">
 		//required minlength="5"
 		//required
 		//required minlength="8"
 		//required
 </script>
-
-</body>
 </html>
