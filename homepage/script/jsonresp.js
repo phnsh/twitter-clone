@@ -9,6 +9,76 @@ async function resolveData(...urls) {
 	let result = await resolve(...urls);
 }
 
+class User {
+	constructor(id, profile_img, cover_img, full_name, user_bio, user_name, user_email, following, stats) {
+		this._id = id;
+		this._profile_img = profile_img; 
+		this._cover_img = cover_img;
+		this._full_name = full_name;
+		this._user_bio = user_bio;
+		this._user_name = user_name;
+		this._user_email = user_email;
+		this._following = following;
+		this._stats = stats;
+	}
+
+	get id() {
+
+	}
+
+	get profile_img() {
+
+	}
+
+	get cover_img() {
+
+	}
+
+	get full_name() {
+
+	}
+
+	get user_bio() {
+
+	}
+
+	get user_name() {
+
+	}
+
+	get user_email() {
+
+	}
+
+	get following() {
+
+	}
+
+	get stats() {
+
+	}
+}
+
+class Stats {
+	constructor(tweets, followers, following) {
+		this._tweets = tweets;
+		this._followers = followers;
+		this._following = following;
+	}
+
+	get tweets() {
+
+	}
+
+	get followers() {
+
+	}
+
+	get following() {
+
+	}
+}
+
 //function to receive the urls for futher processing
 function resolve(...urls) {
 	let fetchData = urls.map(url => fetch(url).then(d => d.json()));
