@@ -9,8 +9,32 @@ async function resolveData(...urls) {
 	let result = await resolve(...urls);
 }
 
+//function to receive the urls for futher processing
+function resolve(...urls) {
+	let fetchData = urls.map(url => fetch(url).then(d => d.json()));
+	let result = Promise.all(fetchData).then(res => resolvedUrls.call(res)); //sent to resolvedUrls()
+	result.then(res => acceptURLs.call(res)); //resolved data in the form of an array
+}
+
+//URLs get resolved here
+function resolvedUrls() {
+	return this;
+}
+
+let acceptURLs = function() {
+	spreadUserData(this[0].data);
+	updateSuggestions(this[1].data);
+}
+
+let spreadUserData = function(arr) {
+	var rawData = arr;
+	let user = new User(rawData.id, rawData.profile_img, rawData.cover_img, rawData.full_name, rawData.user_bio, rawData.user_name, rawData.user_email, rawData.following);
+	let stats = new Stats(rawData.stats.tweets, rawData.stats.followers, rawData.stats.following);
+	updateUserInfo(user, stats);
+}
+
 class User {
-	constructor(id, profile_img, cover_img, full_name, user_bio, user_name, user_email, following, stats) {
+	constructor(id, profile_img, cover_img, full_name, user_bio, user_name, user_email, following) {
 		this._id = id;
 		this._profile_img = profile_img; 
 		this._cover_img = cover_img;
@@ -19,43 +43,38 @@ class User {
 		this._user_name = user_name;
 		this._user_email = user_email;
 		this._following = following;
-		this._stats = stats;
 	}
 
 	get id() {
-
+		return this._id;
 	}
 
 	get profile_img() {
-
+		return this._profile_img;
 	}
 
 	get cover_img() {
-
+		return this._cover_img;
 	}
 
 	get full_name() {
-
+		return this._full_name;
 	}
 
 	get user_bio() {
-
+		return this._user_bio
 	}
 
 	get user_name() {
-
+		return this._user_name;
 	}
 
 	get user_email() {
-
+		return this._user_email;
 	}
 
 	get following() {
-
-	}
-
-	get stats() {
-
+		return this._following;
 	}
 }
 
@@ -67,48 +86,28 @@ class Stats {
 	}
 
 	get tweets() {
-
+		return this._tweets;
 	}
 
 	get followers() {
-
+		return this._followers;
 	}
 
 	get following() {
-
+		return this._following;
 	}
 }
 
-//function to receive the urls for futher processing
-function resolve(...urls) {
-	let fetchData = urls.map(url => fetch(url).then(d => d.json()));
-	let result = Promise.all(fetchData).then(res => resolvedUrls.call(res)); //sent to resolvedUrls()
-	result.then(res => acceptURLs.call(res)); //resolved data in the form of an array
-}
-
-
-//URLs get resolved here
-function resolvedUrls() {
-	return this;
-}
-
-let acceptURLs = function() {
-	updateUserInfo.apply(this[0]);
-	updateSuggestions.apply(this[1]);
-	tweetContent.apply(this[2]);
-}
-
 //function to update users info
-let updateUserInfo = function() {
+let updateUserInfo = function(user, stats) {
 	//console.log(this.data.user_name);
-	let data = this.data;
-	querySelectorImg("div.banner img", data.cover_img);
-	querySelectorInnerHTML("span.USERNAME", data.full_name);
-	querySelectorInnerHTML("span.HANDLE", "@" + data.user_name);
-	querySelectorInnerHTML("div.followingInfo div:nth-child(1) span:nth-child(2)", data.stats.tweets);
-	querySelectorInnerHTML("div.followingInfo div:nth-child(2) span:nth-child(2)", data.stats.following);
-	querySelectorInnerHTML("div.followingInfo div:nth-child(3) span:nth-child(2)", data.stats.followers);
-	querySelectorImg("div.profilepic img", data.profile_img);
+	querySelectorImg("div.banner img", user.cover_img);
+	querySelectorInnerHTML("span.USERNAME", user.full_name);
+	querySelectorInnerHTML("span.HANDLE", "@" + user.user_name);
+	querySelectorInnerHTML("div.followingInfo div:nth-child(1) span:nth-child(2)", stats.tweets);
+	querySelectorInnerHTML("div.followingInfo div:nth-child(2) span:nth-child(2)", stats.following);
+	querySelectorInnerHTML("div.followingInfo div:nth-child(3) span:nth-child(2)", stats.followers);
+	querySelectorImg("div.profilepic img", user.profile_img);
 }
 
 //updating the foollow suggestions
