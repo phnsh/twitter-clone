@@ -170,4 +170,52 @@ let mediaSquare = function() {
 	photosAndVideos.innerHTML = div;
 }
 
+let saveEditProfile = function(event) {
+	event.preventDefault();
+	
+	let fullname = document.forms["editProfileForm"]["fullname"].value;
+	let email = document.forms["editProfileForm"]["email"].value;
+	let location = document.forms["editProfileForm"]["location"].value;
+	let url = document.forms["editProfileForm"]["url"].value;
+	let birthday = document.forms["editProfileForm"]["birthday"].value;
+	
+	if(fullname === '' || email === '' || location === '' || url === '') {
+		document.querySelector(".modalContent > div > span:nth-child(2)").style.color = "#DD4247";
+		document.querySelector(".modalContent > div > span:nth-child(2)").innerHTML = "Fields cannot be empty";
+	}
+
+	else {
+		document.querySelector("#editProfileForm div:nth-child(8) button:nth-child(2)").disabled = true;
+		document.querySelector("#editProfileForm div:nth-child(8) button:nth-child(2)").style.backgroundColor = 'lightgrey';
+		document.querySelector("#editProfileForm div:nth-child(8) button:nth-child(2)").style.cursor = 'default';
+		let user = {
+				user_name: fullname,
+				user_email: email,
+				user_birthday: "45345432",
+				user_from: location,
+				user_website: url
+			};
+	
+			var resp = fetch("https://fsd1.herokuapp.com/users/4/profile",
+					{
+						method:'PUT',
+						headers: {'Content-Type':'application/json'},
+						body:JSON.stringify(user)
+					});
+	
+		resp.then(data => data.json()).then(function(response) {
+			if(response.status === "success") {
+				document.querySelector(".modalContent > div > span:nth-child(2)").innerHTML = "Update Successful";
+				document.querySelector("#editProfileForm div:nth-child(8) button:nth-child(1)").innerHTML = "Exit";
+				setTimeout(function() {document.querySelector(".modalContent > div > span:nth-child(2)").innerHTML = '';}, 5000);
+			}
+			else {
+				console.log(response);
+				document.querySelector(".modalContent > div > span:nth-child(2)").style.color = "#DD4247";
+				document.querySelector(".modalContent > div > span:nth-child(2)").innerHTML = "500 (Internal Server Error) - Please make sure the below entered credentials are not duplicate";	
+			}
+		});
+	}
+}
+
 mediaSquare();

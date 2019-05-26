@@ -10,20 +10,25 @@
 	<header>
 		<div>
 			<div><img src="img/home_logo.png"></div>
-			<div>
-				<div style="
-					margin-top: 7px;">Home</div>
-			</div>
 		</div>
 		<div>
 			<img src="img/birdicon.png">
 		</div>
 		<div>
-			<div><img src="img/rightprofile.png"></div>
+			<div id="myProfileIcon">
+				<img src="img/rightprofile.png" onclick="dropDownShow()" style="cursor: pointer;">
+			</div>
 			<div>
 				<button class="logoutButton">
 					Logout
 				</button>
+			</div>
+			<div id="myProfileArrow" style="display: none;"></div>
+			<div id="myProfileDropDown">
+				<div id="dropdownContainer" style="display: none;">
+					<span onclick="myProfileRedirect()">My Profile</span>
+					<span>option 2</span>
+				</div>
 			</div>
 		</div>
 	</header>
@@ -103,7 +108,20 @@
 </body>
 
 <script type="text/javascript" src="script/jsonresp.js">
-	
 </script>
-
+<script type="text/javascript">
+	let qualifier = true;
+	let dropDownShow = function() {
+		if(qualifier) {
+			document.querySelector("#dropdownContainer").style.display = "flex";
+			document.querySelector("#myProfileArrow").style.display = "flex";
+			qualifier = false;
+		}
+		else {
+			document.querySelector("#dropdownContainer").style.display = "none";
+			document.querySelector("#myProfileArrow").style.display = "none";
+			qualifier = true;
+		}
+	}
+</script>
 </html>

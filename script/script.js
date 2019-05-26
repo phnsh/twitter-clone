@@ -1,3 +1,6 @@
+//sessionStorage.setItem('key', 'value');
+//let data = sessionStorage.getItem('key'); //value
+
 function displaySignUp() {
 	document.getElementById("signup").style.display="block";
 }
@@ -166,11 +169,11 @@ let signupUser = function(event) { //un: user_name1, email: user_name12@gmail.co
 	});
 }
 
-let loginUser = function(event) {
+let loginUser = function(event) { //userid: anonymous@anon.com, pw: qwertyuiop
 	event.preventDefault();
 	let username = document.forms["signinform"]["username"].value;
 	let password = document.forms["signinform"]["password"].value;
-
+	
 	if(username === '' || password === '') {
 		document.querySelector("#loginMessage").style.color = "red";
 		document.querySelector("#loginMessage").innerHTML = "Fields cannot be left empty";
@@ -191,7 +194,8 @@ let loginUser = function(event) {
 			resp.then(data => data.json()).then(function(response) {
 				if(response.status === 'success') {
 					document.querySelector("#loginMessage").style.color = "#32CD32";
-					document.querySelector("#loginMessage").innerHTML = "Login successful";				
+					document.querySelector("#loginMessage").innerHTML = "Login successful";
+					setTimeout(function() {window.location.href = '/homepage/homepage.html'}, 2000);		
 				}
 				else {
 					document.querySelector("#loginMessage").style.color = "red";

@@ -523,7 +523,7 @@ header div:nth-child(3) {
 
 .modalContent {
 	height: 80vh;
-	margin-top: 5%;
+	margin-top: 3%;
 	margin-left: 30%;
 	margin-right: 30%;
 	border-radius: 20px;
@@ -537,22 +537,25 @@ header div:nth-child(3) {
 	position: relative;
 }
 
-.modalContent > div > span {
-	font-size: 35px;
+.modalContent > div > span:nth-child(1) {
+	font-size: 30px;
 	font-weight: bold;
 }
 
-.modalContent div:nth-child(3) {
-
+.modalContent > div > span:nth-child(2) {
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 10px;
+	color: #32CD32;
 }
 
-.modalContent div:nth-child(3) button {
+#editProfileForm div:nth-child(8) button {
 	height: 40px;
 	width: 150px;
 	margin: 10px;
 }
 
-.modalContent div:nth-child(3) button:nth-child(1) {
+#editProfileForm div:nth-child(8) button:nth-child(1) {
 	border: 2px solid #1dcaff;
 	background-color: #fff;
 	color: #1dcaff;
@@ -562,15 +565,15 @@ header div:nth-child(3) {
 	cursor: pointer;
 }
 
-.modalContent div:nth-child(3) button:nth-child(1):hover {
+#editProfileForm div:nth-child(8) button:nth-child(1):hover {
 	background-color: #eaf5fd;
 }
 
-.modalContent div:nth-child(3) button:nth-child(2):hover {
+#editProfileForm div:nth-child(8) button:nth-child(2):hover {
 	background-color: #006dbf;
 }
 
-.modalContent div:nth-child(3) button:nth-child(2) {
+#editProfileForm div:nth-child(8) button:nth-child(2) {
 	border: none;
 	background-color: #1dcaff;
 	color: #fff;
@@ -593,7 +596,7 @@ header div:nth-child(3) {
 	background-color: #f2f2f2f2;
 	padding: 10px;
 	margin-top: 5px;
-	margin: 15px;
+	
 }
 
 #smallFollowButton {

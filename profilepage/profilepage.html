@@ -169,21 +169,22 @@
 			<div class="modalContent">
 				<div>
 					<span>Edit your profile</span>
+					<span></span>
 				</div>
 				<form name="editProfileForm" id="editProfileForm">
-					<input type="name" name="fullname" class="editProfileInput" placeholder="desired name">
+					<input type="text" name="fullname" class="editProfileInput" placeholder="desired name">
 					<input type="email" name="email" class="editProfileInput" placeholder="email address">
-					<input type="email" name="handle" class="editProfileInput" placeholder="desired handle">
-					<input type="email" name="location" class="editProfileInput" placeholder="location">
-					<input type="email" name="email" class="editProfileInput" placeholder="URL">
-					<div style="font-size: 15px;">Birthday: <input type="date" name="birthday" class="editProfileInput"></div>
-					<div style="font-size: 15px;">Cover image: <input type="file" name="birthday" class="editProfileInput"></div>
-					<div style="font-size: 15px;">Profile picture: <input type="file" name="birthday" class="editProfileInput"></div>
+					<!--input type="email" name="handle" class="editProfileInput" placeholder="desired handle"-->
+					<input type="text" name="location" class="editProfileInput" placeholder="location">
+					<input type="text" name="url" class="editProfileInput" placeholder="URL">
+					<div style="font-size: 15;">Birthday: <input type="date" name="birthday" class="editProfileInput"></div>
+					<div style="font-size: 15px;">Cover image: <input type="file" name="coverImage" class="editProfileInput"></div>
+					<div style="font-size: 15px;">Profile picture: <input type="file" name="profilePicture" class="editProfileInput"></div>
+					<div style="position: absolute; bottom: 10px; padding: 10px;">
+						<button onclick="closeEditProfile()">Cancel</button>
+						<button onclick="saveEditProfile(event)">Save</button>
+					</div>
 				</form>
-				<div style="position: absolute; bottom: 10px; padding: 10px;">
-					<button onclick="closeEditProfile()">Cancel</button>
-					<button onclick="closeEditProfile()">Save</button>
-				</div>
 			</div>
 		</div>
 </body>
@@ -196,10 +197,6 @@
 		document.getElementsByClassName("bannerMetaNumbers")[first].style.color = "#1DABDD";
 		document.getElementsByClassName("bannerMeta")[second].style.color = "#8C8C8C";
 		document.getElementsByClassName("bannerMetaNumbers")[second].style.color = "#8C8C8C";
-	}
-
-	function closeEditProfile() {
-		document.querySelector(".modal").style.display = "none";
 	}
 
 	function displayEditProfile() {

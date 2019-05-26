@@ -28,7 +28,47 @@ header > div {
 
 /*HOME logo*/
 
-header div:nth-child(1) {
+#dropdownContainer {
+	width: 200px;
+	flex-direction: column;
+	position: relative;
+	right: 250px;
+	top: 45px;
+	background-color: #C8CCCE;
+	border-radius: 10px;
+	cursor: pointer;
+	box-shadow: 0 3px 15px -2px #000;
+}
+
+#myProfileArrow {
+	top: 38px;
+	transform: rotate(45deg);
+	right: 143px;
+	position: relative;
+	flex: none;
+	width: 10px;
+	height: 10px;
+	border-top: 2px solid #C8CCCE;
+	border-left: 2px solid #C8CCCE;
+	background-color: #C8CCCE;
+}
+
+#myProfileDropDown div > span {
+	text-align: center;
+	padding: 10px;
+}
+
+#myProfileDropDown div > span:nth-child(1):hover {
+	background-color: #DBDCDD;
+	border-radius: 10px 10px 0 0;
+}
+
+#myProfileDropDown div > span:nth-child(2):hover {
+	background-color: #DBDCDD;
+	border-radius: 0 0 10px 10px;
+}
+
+#myProfileIcon {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;

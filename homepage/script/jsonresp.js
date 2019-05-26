@@ -119,3 +119,7 @@ function querySelectorImg(target, data) {
 	let container = document.querySelector(target);
 	container.src = data;
 }
+
+let myProfileRedirect = function() {
+	window.location.href = "/profilepage/profilepage.html";
+}
