@@ -23,7 +23,8 @@ function resolvedUrls() {
 
 let acceptURLs = function() {
 	spreadUserData(this[0].data);
-	updateSuggestions(this[1].data);
+	updateSuggestions.apply(this[1]);
+	tweetContent.apply(this[2]);
 }
 
 let spreadUserData = function(arr) {

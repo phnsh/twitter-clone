@@ -23,27 +23,122 @@ function resolvedUrls() {
 }
 
 let acceptURLs = function() {
-	updateUserInfo.apply(this[0]);
+	console.log(this[0].data);
+	spreadUserData(this[0].data);
 	tweetContent.apply(this[1]);
 	updateSuggestions.apply(this[2]);
 	followingContent.apply(this[3]);
 }
 
-let updateUserInfo = function() {
-	let data = this.data;
-	querySelectorImg(".coverProfilePhoto img", data.profile_img);
-	querySelectorInnerHTML(".personalInfo span:nth-child(1)", data.full_name);
-	querySelectorInnerHTML(".personalInfo span:nth-child(3)", "@" + data.user_name);
-	querySelectorInnerHTML(".personalInfo span:nth-child(4)", data.user_bio);
+let spreadUserData = function(arr) {
+	var rawData = arr;
+	let user = new User(rawData.id, rawData.profile_img, rawData.cover_img, rawData.full_name,
+		rawData.user_bio, rawData.user_name, rawData.user_email, rawData.following,
+		rawData.user_birthday, rawData.user_created_at, rawData.user_from, rawData.user_website);
+	let stats = new Stats(rawData.stats.tweets, rawData.stats.followers, rawData.stats.following);
+	updateUserInfo(user, stats);
+}
 
-	querySelectorInnerHTMLAll(".personalInfodata", data.user_from, 0);
-	querySelectorInnerHTMLAll(".personalInfodata", data.user_website, 1);
-	querySelectorInnerHTMLAll(".personalInfodata", "Joined " + dataConv(data.user_created_at), 2);
-	querySelectorInnerHTMLAll(".personalInfodata", dataConv(data.user_birthday), 3);
+class User {
+	constructor(id, profile_img, cover_img, full_name, user_bio, user_name, user_email, following, user_birthday, user_created_at, user_from, user_website) {
+		this._id = id;
+		this._profile_img = profile_img; 
+		this._cover_img = cover_img;
+		this._full_name = full_name;
+		this._user_bio = user_bio;
+		this._user_name = user_name;
+		this._user_email = user_email;
+		this._following = following;
+		
+		this._user_birthday = user_birthday;
+		this._user_created_at = user_created_at;
+		this._user_from = user_from;
+		this._user_website = user_website;	
+	}
 
-	querySelectorInnerHTMLAll(".bannerMetaNumbers", data.stats.tweets, 0);
-	querySelectorInnerHTMLAll(".bannerMetaNumbers", data.stats.following, 1);
-	querySelectorInnerHTMLAll(".bannerMetaNumbers", data.stats.followers, 2);
+	get id() {
+		return this._id;
+	}
+
+	get profile_img() {
+		return this._profile_img;
+	}
+
+	get cover_img() {
+		return this._cover_img;
+	}
+
+	get full_name() {
+		return this._full_name;
+	}
+
+	get user_bio() {
+		return this._user_bio
+	}
+
+	get user_name() {
+		return this._user_name;
+	}
+
+	get user_email() {
+		return this._user_email;
+	}
+
+	get following() {
+		return this._following;
+	}
+
+	get user_birthday() {
+		return this._user_birthday;
+	}
+
+	get user_created_at() {
+		return this._user_created_at;
+	}
+
+	get user_from() {
+		return this._user_from;
+	}
+
+	get user_website() {
+		return this._user_website;
+	}
+}
+
+class Stats {
+	constructor(tweets, followers, following) {
+		this._tweets = tweets;
+		this._followers = followers;
+		this._following = following;
+	}
+
+	get tweets() {
+		return this._tweets;
+	}
+
+	get followers() {
+		return this._followers;
+	}
+
+	get following() {
+		return this._following;
+	}
+}
+
+let updateUserInfo = function(user, stats) {
+	querySelectorImg(".coverProfilePhoto img", user.profile_img);
+	querySelectorInnerHTML(".personalInfo span:nth-child(1)", user.full_name);
+	querySelectorInnerHTML(".personalInfo span:nth-child(3)", "@" + user.user_name);
+	querySelectorInnerHTML(".personalInfo span:nth-child(4)", user.user_bio);
+
+	querySelectorInnerHTMLAll(".personalInfodata", user.user_from, 0);
+	querySelectorInnerHTMLAll(".personalInfodata", user.user_website, 1);
+	querySelectorInnerHTMLAll(".personalInfodata", "Joined " + dataConv(user.user_created_at), 2);
+	querySelectorInnerHTMLAll(".personalInfodata", dataConv(user.user_birthday), 3);
+
+	querySelectorInnerHTMLAll(".bannerMetaNumbers", stats.tweets, 0);
+	querySelectorInnerHTMLAll(".bannerMetaNumbers", stats.following, 1);
+	querySelectorInnerHTMLAll(".bannerMetaNumbers", stats.followers, 2);
 
 }
 
