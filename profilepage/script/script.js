@@ -1,7 +1,8 @@
 var urls = ["https://fsd1.herokuapp.com/users/1/details",
 "https://fsd1.herokuapp.com/users/1/tweets",
 "https://fsd1.herokuapp.com/users/1/followers/suggestions",
-"https://fsd1.herokuapp.com/users/1/following"];
+"https://fsd1.herokuapp.com/users/1/following",
+"https://fsd1.herokuapp.com/users/1/followers"];
 
 resolveData(...urls);
 
@@ -27,6 +28,7 @@ let acceptURLs = function() {
 	tweetContent.apply(this[1]);
 	updateSuggestions.apply(this[2]);
 	followingContent.apply(this[3]);
+	followersContent.apply(this[4]);
 }
 
 let updateUserInfo = function() {
@@ -137,6 +139,31 @@ let followingContent = function() {
 	followingCards.innerHTML = div;
 }
 
+let followersContent = function() {
+	let data = this.data;
+	let div = '';
+	let followerCards = document.querySelector(".followersCardsContainer");
+	for(var i in data) {
+		div +=
+		`<div class="followers">
+			
+				<div class="followingCardsBanner"><img src="${data[i].cover_img}"></div>
+					<div class="profilepic">
+					<img src="${data[i].profile_img}">
+					<div class="cardMeta">
+						<div class="userMeta">
+							<span>${data[i].full_name}</span>
+							<span>@${data[i].user_name}</span>
+						</div>
+					</div>
+				</div>
+			
+			<span class="userBio">${data[i].user_bio}</span>
+		</div>`;
+	}
+	followerCards.innerHTML = div;
+}
+
 function querySelectorInnerHTML(target, data) {
 	let container = document.querySelector(target);
 	container.innerHTML = data;
@@ -196,12 +223,12 @@ let saveEditProfile = function(event) {
 				user_website: url
 			};
 	
-			var resp = fetch("https://fsd1.herokuapp.com/users/4/profile",
-					{
-						method:'PUT',
-						headers: {'Content-Type':'application/json'},
-						body:JSON.stringify(user)
-					});
+		var resp = fetch("https://fsd1.herokuapp.com/users/4/profile",
+				{
+					method:'PUT',
+					headers: {'Content-Type':'application/json'},
+					body:JSON.stringify(user)
+				});
 	
 		resp.then(data => data.json()).then(function(response) {
 			if(response.status === "success") {
@@ -210,7 +237,6 @@ let saveEditProfile = function(event) {
 				setTimeout(function() {document.querySelector(".modalContent > div > span:nth-child(2)").innerHTML = '';}, 5000);
 			}
 			else {
-				console.log(response);
 				document.querySelector(".modalContent > div > span:nth-child(2)").style.color = "#DD4247";
 				document.querySelector(".modalContent > div > span:nth-child(2)").innerHTML = "500 (Internal Server Error) - Please make sure the below entered credentials are not duplicate";	
 			}

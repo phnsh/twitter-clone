@@ -38,18 +38,19 @@
 		<div class="coverProfilePhoto"><img></div>
 		<div>
 			<div class="coverMeta">
-				<div class="columnMeta" style="cursor: pointer; display: inline;" onclick="hideWindows(0, 1, 'none', 'inline')">
+				<div class="columnMeta" style="cursor: pointer; display: inline;" onclick="hideWindows(0, 1, 2, 'none', 'inline', 'none')">
 					<span class="bannerMeta" style="color: #1DABDD">Tweets</span>
 					<br>
 					<span class="bannerMetaNumbers" style="color: #1DABDD"></span>
 				</div>
-				<div class="columnMeta" style="cursor: pointer; display: inline;" onclick="hideWindows(1, 0, 'inline', 'none')">
+				<div class="columnMeta" style="cursor: pointer; display: inline;" onclick="hideWindows(1, 0, 2, 'inline', 'none', 'none')">
 					<span class="bannerMeta">Following</span>
 					<br>
 					<span class="bannerMetaNumbers"></span>
 				</div>
-				<div class="columnMeta">
+				<div class="columnMeta" style="cursor: pointer; display: inline;" onclick="hideWindows(2, 0, 1, 'none', 'none', 'inline')">
 					<span class="bannerMeta">Followers</span>
+					<br>
 					<span class="bannerMetaNumbers"></span>
 				</div>
 			</div>
@@ -133,9 +134,9 @@
 
 			<div></div>
 		</div>
-	</aside>
+		</aside>
 
-		<div class="rightcontainer">
+		<div class="rightcontainer" style="display: inline;">
 			<div class="whatshappening">
 				<div class="ppimage"></div>
 				<div class="tweetbar">
@@ -159,11 +160,21 @@
 				box-shadow: 1px 6px 15px -8px black;
 				">
 			</div>
-			
 			<div class="followingCardsContainer"></div>
-
+		</div>
+		<div id="rightcontainerFollowers" style="display: none;">
+			<div style="text-align: center;">
+				<img src="img/search2.png" style="position: absolute; height: 20px; margin-top: 7px; margin-left: 5px;">
+				<input type="text" name="followingSearch" placeholder="Search" class="followingSearchStyle" style="
+				padding-left: 30px;
+				box-shadow: 1px 6px 15px -8px black;
+				">
+			</div>
+			<div class="followersCardsContainer">
 			</div>
 		</div>
+
+	</div>
 
 		<div class="modal">
 			<div class="modalContent">
@@ -190,13 +201,16 @@
 </body>
 
 <script>
-	function hideWindows(first, second, displayVal1, displayVal2) {
+	function hideWindows(first, second, third, displayVal1, displayVal2, displayVal3) {
 		document.getElementById("rightcontainerFollowing").style.display = displayVal1;
 		document.getElementsByClassName("rightcontainer")[0].style.display = displayVal2;
+		document.getElementById("rightcontainerFollowers").style.display = displayVal3;
 		document.getElementsByClassName("bannerMeta")[first].style.color = "#1DABDD";
 		document.getElementsByClassName("bannerMetaNumbers")[first].style.color = "#1DABDD";
 		document.getElementsByClassName("bannerMeta")[second].style.color = "#8C8C8C";
 		document.getElementsByClassName("bannerMetaNumbers")[second].style.color = "#8C8C8C";
+		document.getElementsByClassName("bannerMeta")[third].style.color = "#8C8C8C";
+		document.getElementsByClassName("bannerMetaNumbers")[third].style.color = "#8C8C8C";
 	}
 
 	function displayEditProfile() {
