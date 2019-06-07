@@ -16,7 +16,7 @@ async function resolve(...urls) {
 	let fetchData = await urls.map(url => fetch(url).then(d => d.json())
 		.catch(function() {
 			document.documentElement.innerHTML = '';
-			document.body.style.color = "#ff0000";
+			//document.body.style.color = "#ff0000";
 			document.body.innerHTML = "404 error. URLs are not loading at the moment.";
 		}));
 	let result = Promise.all(fetchData).then(res => resolvedUrls.call(res)); //sent to resolvedUrls()
