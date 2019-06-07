@@ -12,8 +12,13 @@ async function resolveData(...urls) {
 }
 
 //function to receive the urls for futher processing
-function resolve(...urls) {
-	let fetchData = urls.map(url => fetch(url).then(d => d.json()));
+async function resolve(...urls) {
+	let fetchData = await urls.map(url => fetch(url).then(d => d.json())
+		.catch(function() {
+			document.documentElement.innerHTML = '';
+			document.body.style.color = "#ff0000";
+			document.body.innerHTML = "404 error. URLs are not loading at the moment.";
+		}));
 	let result = Promise.all(fetchData).then(res => resolvedUrls.call(res)); //sent to resolvedUrls()
 	result.then(res => acceptURLs.call(res)); //resolved data in the form of an array
 }
@@ -54,7 +59,7 @@ let updateSuggestions = function() {
 	let div = '';
 	let leftmidmid = document.querySelector(".leftmidmid");
 	for(var i = 0; i < data.length && i < 3; i++) {
-		div += `<div class="smallicons">
+		div = `${div} <div class="smallicons">
 						<div class="ppimage">
 							<img src="${data[i].profile_img}">
 						</div>
@@ -79,7 +84,7 @@ let tweetContent = function() {
 	let div = '';
 	let rightbottom = document.querySelector(".rightbottom");
 	for(var i in data) {
-		div += `<div class="indposts">
+		div = `${div} <div class="indposts">
 						<div class="ppimage">
 							<img src="${data[i].user.profile_img}"">
 						</div>
@@ -120,7 +125,7 @@ let followingContent = function() {
 	let div = '';
 	let followingCards = document.querySelector(".followingCardsContainer");
 	for(var i in data) {
-		div += `<div class="followingCards">
+		div = `${div} <div class="followingCards">
 					<div>
 						<div class="followingCardsBanner"><img src="${data[i].cover_img}"></div>
 						<div class="profilepic">
@@ -144,9 +149,7 @@ let followersContent = function() {
 	let div = '';
 	let followerCards = document.querySelector(".followersCardsContainer");
 	for(var i in data) {
-		div +=
-		`<div class="followers">
-			
+		div =`${div} <div class="followers">
 				<div class="followingCardsBanner"><img src="${data[i].cover_img}"></div>
 					<div class="profilepic">
 					<img src="${data[i].profile_img}">
@@ -185,14 +188,14 @@ function dataConv(UTCSeconds) {
 	let month = months[date.getMonth() + 1];
 	let day = date.getDate();
 	let year = date.getFullYear();
-	return day + " " + month + " " + year;
+	return `${day} ${month} ${year}`;
 }
 
 let mediaSquare = function() {
 	let photosAndVideos = document.querySelector(".photosAndVideos");
 	div = '';
 	for(var i = 0; i < 9; i++) {
-		var div = div + `<div class="mediaSquare"></div>`;
+		var div = `${div} <div class="mediaSquare"></div>`;
 	}
 	photosAndVideos.innerHTML = div;
 }

@@ -2,16 +2,22 @@
 //let data = sessionStorage.getItem('key'); //value
 
 function displaySignUp() {
+	document.querySelector("#signupMessage").innerHTML = '';
+	document.forms["signupform"]["username"].value = '';
+	document.forms["signupform"]["email"].value = '';
+	document.forms["signupform"]["password"].value = '';
 	document.getElementById("signup").style.display="block";
 }
 
 function displayLogIn() {
+	document.querySelector("#loginMessage").innerHTML = '';
+	document.forms["signinform"]["username"].value = '';
+	document.forms["signinform"]["password"].value = '';
 	document.getElementById("login").style.display="block";
 }
 
-function closeDialog() {
-	document.getElementById("signup").style.display="none";
-	document.getElementById("login").style.display="none";
+function closeDialog(closeForm) {
+	document.getElementById(closeForm).style.display="none";
 }
 
 var validateUsername = function(inputType, displayWarning, nthChild) {
@@ -19,13 +25,13 @@ var validateUsername = function(inputType, displayWarning, nthChild) {
 	var form = document.forms["signupform"][inputType].value;
 	if(form.length < 5) {
 		//smg.submitButtonEnabled = false;
-		isItTrue.someval1(submitButtonEnabled);
+		isItTrue.setUsernameValid(submitButtonEnabled);
 		valildateAll(displayWarning, nthChild);
 	}
 	else {
 		submitButtonEnabled = true;
 		//isItTrue.someval1.call(smg);
-		isItTrue.someval1(submitButtonEnabled);
+		isItTrue.setEmailValid(submitButtonEnabled);
 		document.querySelector("#signupform > button").disabled = false;
 		document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = '';
 	}
@@ -36,13 +42,13 @@ var validateEmail = function(inputType, displayWarning, nthChild) {
 	let submitButtonEnabled = false;
 	var form = document.forms["signupform"][inputType].value;
 	if(form.length < 5) {
-		isItTrue.someval2(submitButtonEnabled);
+		isItTrue.setEmailValid(submitButtonEnabled);
 		valildateAll(displayWarning, nthChild);
 	}
 	else {
 		submitButtonEnabled = true;
 		document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = '';
-		isItTrue.someval2(submitButtonEnabled);
+		isItTrue.setEmailValid(submitButtonEnabled);
 	}
 	enableSubmit();
 }
@@ -53,12 +59,12 @@ var validatePassword = function(inputType, displayWarning, nthChild) {
 	var password = document.querySelector("#signupform input:nth-child(5)").value;
 	var confirm = document.querySelector("#signupform input:nth-child(7)").value;
 	if(form.length < 8) {
-		isItTrue.someval3(submitButtonEnabled);
+		isItTrue.setPasswordValid(submitButtonEnabled);
 		valildateAll(displayWarning, nthChild);
 	}
 	else {
 		submitButtonEnabled = true;
-		isItTrue.someval3(submitButtonEnabled);
+		isItTrue.setPasswordValid(submitButtonEnabled);
 		document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = '';
 	}
 	
@@ -70,23 +76,23 @@ var confirmPassword = function(displayWarning, nthChild) {
 	var password = document.querySelector("#signupform input:nth-child(5)").value;
 	var confirm = document.querySelector("#signupform input:nth-child(7)").value;
 	if(confirm.length < 8) {
-		isItTrue.someval4(submitButtonEnabled);
+		isItTrue.setConfirmPasswordValid(submitButtonEnabled);
 		valildateAll("Password should be more than 8 characters long", nthChild);
 	}
 	else {
 		submitButtonEnabled = true;
-		isItTrue.someval4(submitButtonEnabled);
+		isItTrue.setConfirmPasswordValid(submitButtonEnabled);
 		document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = '';
 	}
 	enableSubmit();
 	if(confirm !== password) {
-		isItTrue.someval4(false);
+		isItTrue.setConfirmPasswordValid(false);
 		valildateAll("Passwords not matching", nthChild);
 	}
 	else {
 		submitButtonEnabled = true;
 		document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = '';
-		isItTrue.someval4(submitButtonEnabled);
+		isItTrue.setConfirmPasswordValid(submitButtonEnabled);
 	}
 	enableSubmit();
 }
@@ -99,40 +105,40 @@ function valildateAll(displayWarning, nthChild) {
 }
 
 let isItTrue = function() {
-	value1 = false;
-	value2 = false;
-	value3 = false;
-	value4 = false;
+	isUsernameValid = false;
+	isEmailValid = false;
+	isPasswordValild = false;
+	isConfirmPasswordValid = false;
 	return {
-		someval1: function(val) {
-			value1 = val;
+		setUsernameValid: function(val) {
+			isUsernameValid = val;
 		},
-		getSomeVal1: function() {
-			return value1;
+		getUsernameValid: function() {
+			return isUsernameValid;
 		},
-		someval2: function(val) {
-			value2 = val;
+		setEmailValid: function(val) {
+			isEmailValid = val;
 		},
-		getSomeVal2: function() {
-			return value2;
+		getEmailValid: function() {
+			return isEmailValid;
 		},
-		someval3: function(val) {
-			value3 = val;
+		setPasswordValid: function(val) {
+			isPasswordValild = val;
 		},
-		getSomeVal3: function() {
-			return value3;
+		getPasswordValid: function() {
+			return isPasswordValild;
 		},
-		someval4: function(val) {
-			value4 = val;
+		setConfirmPasswordValid: function(val) {
+			isConfirmPasswordValid = val;
 		},
-		getSomeVal4: function() {
-			return value4;
+		getConfirmPasswordValid: function() {
+			return isConfirmPasswordValid;
 		}
 	}
 }();
 
 function enableSubmit() {
-	if(isItTrue.getSomeVal1() && isItTrue.getSomeVal2() && isItTrue.getSomeVal3() && isItTrue.getSomeVal4()) {
+	if(isItTrue.getUsernameValid && isItTrue.getEmailValid() && isItTrue.getPasswordValid() && isItTrue.getConfirmPasswordValid()) {
 		document.querySelector("#signupSubmit").disabled = false;
 		document.querySelector("#signupSubmit").style.cursor = "pointer";
 		document.querySelector("#signupSubmit").style.background = "#1DABDD";
@@ -163,7 +169,7 @@ let signupUser = function(event) { //un: user_name1, email: user_name12@gmail.co
 			document.querySelector("#signupMessage").innerHTML = "Signed up successfully";
 		}
 		else {
-			document.querySelector("#signupMessage").style.color = "red";
+			document.querySelector("#signupMessage").style.color = "#ff0000";
 			document.querySelector("#signupMessage").innerHTML = "User already exists";
 		}
 	});
@@ -175,7 +181,7 @@ let loginUser = function(event) { //userid: anonymous@anon.com, pw: qwertyuiop
 	let password = document.forms["signinform"]["password"].value;
 	
 	if(username === '' || password === '') {
-		document.querySelector("#loginMessage").style.color = "red";
+		document.querySelector("#loginMessage").style.color = "#ff0000";
 		document.querySelector("#loginMessage").innerHTML = "Fields cannot be left empty";
 	}
 	else {
@@ -198,7 +204,7 @@ let loginUser = function(event) { //userid: anonymous@anon.com, pw: qwertyuiop
 					setTimeout(function() {window.location.href = '/homepage/homepage.html'}, 2000);		
 				}
 				else {
-					document.querySelector("#loginMessage").style.color = "red";
+					document.querySelector("#loginMessage").style.color = "#ff0000";
 					document.querySelector("#loginMessage").innerHTML = "There might be login issues or your username/password is incorrect";
 				}
 			});

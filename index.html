@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
 	<title>Twitter. It's what's happening</title>
 	<link rel="icon" href="img/smallicon.png">
@@ -63,7 +64,7 @@
 	<div id="signup" class="modal" style="display: none;">
 		<div class="modal_content">
 			<h2 class="modal_heading" style="color: #18ADDE;">Sign up to Twitter</h2>
-			<span class="close" onclick="closeDialog()">&#10006;</span>
+			<span class="close" onclick="closeDialog('signup')">&#10006;</span>
 			<div class="modal_body">
 				<div>
 					<img src="img/profile.png">
@@ -90,7 +91,7 @@
 	<div id="login" class="modal" style="display: none;">
 		<div class="modal_content">
 			<h2 class="modal_heading" style="color: #18ADDE;">Log in to Twitter</h2>
-			<span class="close" onclick="closeDialog()">&#10006;</span>
+			<span class="close" onclick="closeDialog('login')">&#10006;</span>
 			<div class="modal_body">
 				<form name="signinform" method="POST">
 					<input type="username" name="username" placeholder="Username" required>

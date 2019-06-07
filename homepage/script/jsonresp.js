@@ -10,12 +10,16 @@ async function resolveData(...urls) {
 }
 
 //function to receive the urls for futher processing
-function resolve(...urls) {
-	let fetchData = urls.map(url => fetch(url).then(d => d.json()));
+async function resolve(...urls) {
+	let fetchData = await urls.map(url => fetch(url).then(d => d.json())
+		.catch(function() {
+			document.documentElement.innerHTML = '';
+			//document.body.style.color = "#ff0000";
+			document.body.innerHTML = "404 error. URLs are not loading at the moment.";
+		}));
 	let result = Promise.all(fetchData).then(res => resolvedUrls.call(res)); //sent to resolvedUrls()
 	result.then(res => acceptURLs.call(res)); //resolved data in the form of an array
 }
-
 
 //URLs get resolved here
 function resolvedUrls() {
@@ -41,13 +45,13 @@ let updateUserInfo = function() {
 	querySelectorImg("div.profilepic img", data.profile_img);
 }
 
-//updating the foollow suggestions
+//updating the follow suggestions
 let updateSuggestions = function() {
 	let data = this.data;
 	let div = '';
 	let leftmidmid = document.querySelector(".leftmidmid");
 	for(var i = 0; i < data.length && i < 3; i++) {
-		div += `<div class="smallicons">
+		div = `${div} <div class="smallicons">
 						<div class="ppimage">
 							<img src="${data[i].profile_img}">
 						</div>
@@ -73,7 +77,7 @@ let tweetContent = function() {
 	let div = '';
 	let rightbottom = document.querySelector(".rightbottom");
 	for(var i in data) {
-		div += `<div class="indposts">
+		div = `${div} <div class="indposts">
 						<div class="ppimage">
 							<img src="${data[i].user.profile_img}"">
 						</div>
@@ -109,7 +113,7 @@ let tweetContent = function() {
 	rightbottom.innerHTML = div;
 }
 
-//function to target queryselector and to target a picture below
+//function to target queryselector and to target a picture
 function querySelectorInnerHTML(target, data) {
 	let container = document.querySelector(target);
 	container.innerHTML = data;

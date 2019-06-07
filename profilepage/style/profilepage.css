@@ -671,3 +671,32 @@ header div:nth-child(3) {
 	padding: 5px;
 	box-shadow: 5px 8px 15px -9px black;
 }
+
+@media screen and (max-width: 600px) {
+	aside {
+		visibility: hidden;
+	}
+	body {
+		width: 100%;
+	}
+	.coverphotocontainer {
+		width: 212vw;
+		right: 0;
+	}
+	.coverbar {
+		width: 190vw;
+	}
+	.rightcontainer {
+		width: 190vw;
+		margin-left: 0;
+	}
+	.whatshappening {
+		width: 130vw;
+	}
+	.tweetTextBox {
+		width: 100vw;
+	}
+	div.coverbar > div > div:nth-child(3) {
+		visibility: hidden;
+	}
+}
