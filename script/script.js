@@ -35,7 +35,7 @@ var validateUsername = function(inputType, displayWarning, nthChild) {
 		document.querySelector("#signupform > button").disabled = false;
 		document.querySelector("#signupform span:nth-child(" + nthChild + ")").innerHTML = '';
 	}
-	enableSubmit(isItTrue.getSomeVal1());
+	enableSubmit(isItTrue.setUsernameValid());
 }
 
 var validateEmail = function(inputType, displayWarning, nthChild) {
@@ -165,6 +165,9 @@ let signupUser = function(event) { //un: user_name1, email: user_name12@gmail.co
 	var resp = fetch('https://fsd1.herokuapp.com/users/create', init);
 	resp.then(data => data.json()).then(function(response) {
 		if(response.status === "success") {
+			//console.log(response);
+			//response.data.userId;
+			//sessionStorage.set("userId", response.data.userId); //future feature
 			document.querySelector("#signupMessage").style.color = "#32CD32";
 			document.querySelector("#signupMessage").innerHTML = "Signed up successfully";
 		}
@@ -177,6 +180,9 @@ let signupUser = function(event) { //un: user_name1, email: user_name12@gmail.co
 
 let loginUser = function(event) { //userid: anonymous@anon.com, pw: qwertyuiop
 	event.preventDefault();
+	document.querySelector("#loginButton").disabled = true;
+	document.querySelector("#loginButton").style.background = 'lightgrey';
+	document.querySelector("#loginButton").style.cursor = "default";
 	let username = document.forms["signinform"]["username"].value;
 	let password = document.forms["signinform"]["password"].value;
 	
@@ -199,8 +205,9 @@ let loginUser = function(event) { //userid: anonymous@anon.com, pw: qwertyuiop
 			});
 			resp.then(data => data.json()).then(function(response) {
 				if(response.status === 'success') {
+					//console.log(response);
 					document.querySelector("#loginMessage").style.color = "#32CD32";
-					document.querySelector("#loginMessage").innerHTML = "Login successful";
+					document.querySelector("#loginMessage").innerHTML = response.message;
 					setTimeout(function() {window.location.href = '/homepage/homepage.html'}, 2000);		
 				}
 				else {
