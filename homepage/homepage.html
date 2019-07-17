@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="text/css" href="img/smallicon.png">
+	<title>Twitter Home</title>
 	<link rel="stylesheet" type="text/css" href="style/homepagestyle.css">
 </head>
 
@@ -9,20 +11,23 @@
 	<header>
 		<div>
 			<div><img src="img/home_logo.png"></div>
-			<div>
-				<div style="
-					margin-top: 7px;">Home</div>
-			</div>
 		</div>
 		<div>
 			<img src="img/birdicon.png">
 		</div>
 		<div>
-			<div><img src="img/rightprofile.png"></div>
+			<div id="myProfileIcon">
+				<img src="img/rightprofile.png" onclick="dropDownShow()" style="cursor: pointer;">
+			</div>
 			<div>
-				<button class="logoutButton">
-					Logout
-				</button>
+				
+			</div>
+			<div id="myProfileArrow" style="display: none;"></div>
+			<div id="myProfileDropDown">
+				<div id="dropdownContainer" style="display: none;">
+					<span onclick="myProfileRedirect()">My Profile</span>
+					<span>Logout</span>
+				</div>
 			</div>
 		</div>
 	</header>
@@ -31,30 +36,30 @@
 		<div class="leftcontainer">
 			<div class="lefttop">
 				<div>
-				<div class="banner"><img></div>
-				<div class="profilepic">
-					<div><img></div>
-					<div>
-						<span class="USERNAME"></span>
-						<br>
-						<span class="HANDLE" style="color: grey;"></span>
-					</div>	
+					<div class="banner"><img></div>
+					<div class="profilepic">
+						<div><img></div>
+						<div>
+							<span class="USERNAME"></span>
+							<br>
+							<span class="HANDLE" style="color: grey;"></span>
+						</div>	
+					</div>
+					<div class="followingInfo">
+						<div>Tweets
+							<br>
+							<span></span>
+						</div>
+						<div>Following
+							<br>
+							<span></span>
+						</div>
+						<div>Followers
+							<br>
+							<span></span>
+						</div>
+					</div>
 				</div>
-				<div class="followingInfo">
-					<div>Tweets
-						<br>
-					<span></span>
-					</div>
-					<div>Following
-						<br>
-						<span></span>
-					</div>
-					<div>Followers
-						<br>
-						<span></span>
-					</div>
-				</div>
-			</div>
 			</div>
 			
 			<div class="leftmid">
@@ -63,9 +68,7 @@
 						Who to follow
 					</span>
 				</div>
-				<div class="leftmidmid">
-					
-				</div>
+				<div class="leftmidmid"></div>
 				<div class="leftmidmidfooter">
 					<span style="color: #828282;">
 						Find people you know
@@ -96,19 +99,28 @@
 					</div>
 				</div>
 			</div>
-
-			<div class="rightbottom">
-				
-			</div>
-
-			</div>
+			<div class="rightbottom"></div>
 		</div>
 	</div>
+</div>
 
 </body>
 
 <script type="text/javascript" src="script/jsonresp.js">
-	document.querySelector(".comments").innerHTML = data[i].stats.comments;
 </script>
-
+<script type="text/javascript">
+	let qualifier = true;
+	let dropDownShow = function() {
+		if(qualifier) {
+			document.querySelector("#dropdownContainer").style.display = "flex";
+			document.querySelector("#myProfileArrow").style.display = "flex";
+			qualifier = false;
+		}
+		else {
+			document.querySelector("#dropdownContainer").style.display = "none";
+			document.querySelector("#myProfileArrow").style.display = "none";
+			qualifier = true;
+		}
+	}
+</script>
 </html>

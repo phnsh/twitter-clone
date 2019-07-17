@@ -77,8 +77,7 @@ header div:nth-child(3) {
 }
 
 .coverProfilePhoto { /*large profile picture in the banner*/
-	content: url("../img/profilelarge.png");
-	height: 120px;
+	/*content: url("../img/profilelarge.png");*/
 	margin-top: -50px;
 	margin-left: 120px;
 }
@@ -138,6 +137,7 @@ header div:nth-child(3) {
 	/* border: 1px solid black; */
 	margin: 5px;
 	margin-top: 10px;
+	border-radius: 5px;
 }
 
 #rightcontainerFollowing {
@@ -152,6 +152,13 @@ header div:nth-child(3) {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.Container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: space-evenly;
 }
 
@@ -163,29 +170,46 @@ header div:nth-child(3) {
 	/* border: 2px solid black; */
 	padding: 5px;
 	margin-top: 20px;
+	display: flex;
 	flex-wrap: wrap;
-	box-shadow: 5px 8px 15px -8px black;
+	flex-direction: column;
+	box-shadow: 5px 8px 15px -9px black;
 }
 
 .followingCardsBanner {
-	background-color: #DBDCDD;
-	height: 80px;
 	border-radius: 10px;
 }
 
-.profilepic > img {
-	height: 90px;
+.followingCardsBanner img {
+	border-radius: 10px;
+	width: 100%;
+	height: 80px;
+}
+
+.profilepic {
+	display: flex;
+	flex-direction: row;
+}
+
+.profilepic img {
+	width: 35px;
+	height: 35px;
 }
 
 .cardMeta {
 	display: flex;
 	flex-wrap: wrap;
-
 }
 
 .userMeta {
 	display: flex;
 	flex-direction: column;
+}
+
+.userBio {
+	margin-top: 20px;
+	color: #828282;
+	margin-left: 5px;
 }
 
 .userMeta span:nth-child(1) {
@@ -249,7 +273,7 @@ header div:nth-child(3) {
 	width: 700px;
 	margin-left: 30px;
 	/* border: 2px solid green; */
-	display: flex;
+	display: none;
 	flex-direction: column;
 }
 
@@ -275,7 +299,7 @@ header div:nth-child(3) {
 }
 
 .leftmid {
-	height: 240px;
+	
 	/*border: 2px solid yellow; */
 	display: flex;
 	flex-direction: column;
@@ -299,13 +323,6 @@ header div:nth-child(3) {
 	font-size: 15px;
 	box-shadow: 0 7px 10px -7px black;
 }
-
-.profilepic {
-	display: flex;
-	height: 100px;
-}
-
-
 
 .profilepic img {
 	margin-top: -20px;
@@ -361,7 +378,7 @@ header div:nth-child(3) {
 	/* border: 1px solid black;*/
 	border-top: 1px solid lightgrey;
 	align-items: flex-start;
-	height: 60px;
+	padding: 5px;
 }
 
 .whatshappening {
@@ -400,7 +417,7 @@ header div:nth-child(3) {
 	flex-direction: column;
 	/*border: 2px solid red;*/
 	margin-top: 15px;
-	box-shadow: 0 7px 10px -4px black;
+	box-shadow: 0 7px 10px -9px black;
 }
 
 .indposts {
@@ -415,6 +432,7 @@ header div:nth-child(3) {
 
 .namehandle {
 	color: #828282;
+
 }
 
 .namehandle span:nth-child(1) {
@@ -423,16 +441,14 @@ header div:nth-child(3) {
 	margin-left: 15px;
 }
 
-.namehandle span:nth-child(3) {
-	
-}
-
+/*
 .namehandle span:nth-child(4) {
 	content: url(../img/downarrow.svg);
 	width: 20px;
 	margin-left: 350px;
 	cursor: pointer;
 }
+*/
 
 .postcontent {
 	display: flex;
@@ -457,31 +473,138 @@ header div:nth-child(3) {
 	font-size: 12px;
 	align-items: flex-start;
 	margin-left: 15px;
-	padding: 3px 0 3px 0;
+	margin-top: 15px;
+	padding: 0;
 }
 
 .comments {
 	display: flex;
-	content: url("../img/replies.png");
+}
+
+.comments span {
+	padding-left: 5px;
+	color: #828282;
 }
 
 .likes {
-	margin-left: 30px;
+	margin-left: 40px;
 	display: flex;
-	content: url("../img/likes.png");	
 }
 
+.likes span {
+	padding-left: 5px;
+	color: #828282;
+}
+
+.retweets {
+	margin-left: 40px;
+	display: flex;
+}
+
+.retweets span {
+	padding-left: 5px;
+	color: #828282;
+}
 .playicon {
 	transform: translate(-350%, -150%);
 }
 
 #username {
 	font-weight: bold;
-	padding-left: 15px;
+	padding-left: 10px;
 }
 
 #handle {
-	font-size: 15px;
+	font-size: 13px;
+	color: #928482;
+}
+
+.modal {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	background-color: rgb(0,0,0,0.6);
+}
+
+.modalContent {
+	height: 80vh;
+	margin-top: 3%;
+	margin-left: 30%;
+	margin-right: 30%;
+	border-radius: 20px;
+	background-color: #fff;
+	padding: 20px;
+}
+
+.modalContent {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.modalContent > div > span:nth-child(1) {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.modalContent > div > span:nth-child(2) {
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 10px;
+	color: #32CD32;
+}
+
+#editProfileForm div:nth-child(8) button {
+	height: 40px;
+	width: 150px;
+	margin: 10px;
+}
+
+#editProfileForm div:nth-child(8) button:nth-child(1) {
+	border: 2px solid #1dcaff;
+	background-color: #fff;
+	color: #1dcaff;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+#editProfileForm div:nth-child(8) button:nth-child(1):hover {
+	background-color: #eaf5fd;
+}
+
+#editProfileForm div:nth-child(8) button:nth-child(2):hover {
+	background-color: #006dbf;
+}
+
+#editProfileForm div:nth-child(8) button:nth-child(2) {
+	border: none;
+	background-color: #1dcaff;
+	color: #fff;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 20px; 
+	cursor: pointer;
+}
+
+#editProfileForm {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin-top: 30px;
+}
+
+.editProfileInput {
+	border-radius: 20px;
+	border-style: none;
+	background-color: #f2f2f2f2;
+	padding: 10px;
+	margin-top: 5px;
+	
 }
 
 #smallFollowButton {
@@ -496,7 +619,7 @@ header div:nth-child(3) {
 	font-weight: bold;
 	margin-top: 10px;
 	font-size: 14px;
-	margin-top: 5px;
+	margin-top: 10px;
 }
 
 #smallFollowButton:hover {
@@ -521,4 +644,59 @@ header div:nth-child(3) {
 
 .logoutButton:hover {
 	background-color: #E1E8ED;
+}
+
+#rightcontainerFollowers {
+	/*border: 2px solid black; */
+	margin-left: 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+.followersCardsContainer {
+	width: 700px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.followers {
+	width: 220px;
+	height: 170px;
+/*	border: 2px solid blue;*/
+	background-color: #fff;
+	margin-top: 20px;
+	border-radius: 10px;
+	padding: 5px;
+	box-shadow: 5px 8px 15px -9px black;
+}
+
+@media screen and (max-width: 600px) {
+	aside {
+		visibility: hidden;
+	}
+	body {
+		width: 100%;
+	}
+	.coverphotocontainer {
+		width: 212vw;
+		right: 0;
+	}
+	.coverbar {
+		width: 190vw;
+	}
+	.rightcontainer {
+		width: 190vw;
+		margin-left: 0;
+	}
+	.whatshappening {
+		width: 130vw;
+	}
+	.tweetTextBox {
+		width: 100vw;
+	}
+	div.coverbar > div > div:nth-child(3) {
+		visibility: hidden;
+	}
 }

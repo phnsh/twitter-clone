@@ -16,7 +16,7 @@ header {
 	left: 0;
 	right: 0;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-around;
 	box-shadow: 0 7px 10px -9px black;
 }
 
@@ -26,9 +26,61 @@ header > div {
 	margin-top: 13px;
 }
 
+header div:nth-child(1) img:nth-child(1) {
+	margin-left: 10px; 
+}
+
+header div:nth-child(2) img:nth-child(1) {
+	margin-left: 80px;
+}
+
+header div:nth-child(3) img:nth-child(1) {
+	margin-left: 145px;
+}
+
 /*HOME logo*/
 
-header div:nth-child(1) {
+#dropdownContainer {
+	width: 200px;
+	flex-direction: column;
+	position: relative;
+	right: 130px;
+	top: 45px;
+	background-color: #C8CCCE;
+	border-radius: 10px;
+	cursor: pointer;
+	box-shadow: 0 3px 15px -2px #000;
+}
+
+#myProfileArrow {
+	top: 38px;
+	transform: rotate(45deg);
+	right: 23px;
+	position: relative;
+	flex: none;
+	width: 10px;
+	height: 10px;
+	border-top: 2px solid #C8CCCE;
+	border-left: 2px solid #C8CCCE;
+	background-color: #C8CCCE;
+}
+
+#myProfileDropDown div > span {
+	text-align: center;
+	padding: 10px;
+}
+
+#myProfileDropDown div > span:nth-child(1):hover {
+	background-color: #DBDCDD;
+	border-radius: 10px 10px 0 0;
+}
+
+#myProfileDropDown div > span:nth-child(2):hover {
+	background-color: #DBDCDD;
+	border-radius: 0 0 10px 10px;
+}
+
+#myProfileIcon {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -51,12 +103,11 @@ header div:nth-child(3) {
 	display: flex;
 	justify-content: center;
 	margin-top: 90px;
-  	flex-wrap: wrap;
-  	align-items: flex-start;
+  align-items: flex-start;
 }
 
 .leftcontainer {
-	width: 280px;
+	/*width: 280px;*/
 	/* border: 2px solid blue; */
 	display: flex;
 	flex-direction: column;
@@ -64,11 +115,12 @@ header div:nth-child(3) {
 
 
 .rightcontainer {
-	width: 700px;
+/*	width: 700px;*/
 	margin-left: 30px;
 	/* border: 2px solid green; */
 	display: flex;
 	flex-direction: column;
+	float: right;
 }
 
 .lefttop {
@@ -79,7 +131,7 @@ header div:nth-child(3) {
 	/* border: 2px solid blue; */
 	background-color: #fff;
 	border-radius: 15px;
-	box-shadow: 0 7px 10px -7px black;
+	box-shadow: 0 7px 10px -8px black;
 }
 
 .lefttop div {
@@ -95,7 +147,7 @@ header div:nth-child(3) {
 
 .banner img {
 	height: 120px;
-	width: 270px;
+	width: 100%;
 	border-radius: 10px;
 }
 
@@ -255,12 +307,12 @@ header div:nth-child(3) {
 	font-size: 16px;
 }
 
-.namehandle span:nth-child(4) {
+/*.namehandle span:nth-child(4) {
 	content: url(../img/downarrow.svg);
 	width: 20px;
 	margin-left: 350px;
 	cursor: pointer;
-}
+}*/
 
 .postcontent {
 	display: flex;
@@ -329,8 +381,7 @@ header div:nth-child(3) {
 }
 
 #handle {
-	font-size: 15px;
-	margin-left: 5px;
+	font-size: 13px;
 	color: #828282;
 }
 
@@ -370,4 +421,51 @@ header div:nth-child(3) {
 
 .logoutButton:hover {
 	background-color: #E1E8ED;
+}
+
+@media screen and (max-width: 600px) {
+	.leftcontainer {
+		visibility: hidden;
+	}
+	.rightcontainer {
+		width: 180%;
+		margin-left: 0;
+	}
+	.tweetbar {
+		width: 80%;
+	}
+	.tweetTextBox {
+		width: 300px;
+	}
+	.whatshappening {
+		margin-right: 60px;
+	}
+	.rightbottom {
+		width: 365px;
+		margin-right: 40px;
+	}
+	#dropdownContainer {
+		width: 100px;
+		flex-direction: column;
+		position: relative;
+		right: 80px;
+		top: 45px;
+		background-color: #C8CCCE;
+		border-radius: 10px;
+		cursor: pointer;
+		box-shadow: 0 3px 15px -2px #000;
+	}
+
+	#myProfileArrow {
+		top: 38px;
+		transform: rotate(45deg);
+		right: 23px;
+		position: relative;
+		flex: none;
+		width: 10px;
+		height: 10px;
+		border-top: 2px solid #C8CCCE;
+		border-left: 2px solid #C8CCCE;
+		background-color: #C8CCCE;
+	}
 }

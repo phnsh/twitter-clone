@@ -31,6 +31,10 @@ header {
 	font-weight: 400;
 }
 
+#signupSubmit {
+	background-color: lightgrey;
+	cursor: default;
+}
 
 #ulStyle {
 	display: table-cell;
@@ -38,7 +42,6 @@ header {
 	list-style: none;
 	font-size: 20px;
 	color: #fff;
-	padding-top: 160px;
 	text-align: left;
 }
 
@@ -55,14 +58,11 @@ li > img {
 
 footer {
 	background-color: #0d7d9b;
-	padding: 20px;
 	position: fixed;
 	bottom: 0;
 	width: 100%;
 	color: #fff;
 	text-align: center;
-	padding-top: 10px;
-	padding-bottom: 10px;
 }
 
 #footerUL {
@@ -93,7 +93,7 @@ footer {
 #buttons {
 	background-color: Transparent;
 	margin-left: 15px;
-	margin-top: 40px;
+	margin-top: 30px;
     border: 2px solid #fff;
     padding: 10px 45px;
     color: #fff;
@@ -146,7 +146,6 @@ input {
 
 form > button {
 	border: none;
-	background-color: #18ADDE;
 	color: #fff;
 	height: 40px;
 	width: 150px;
@@ -170,4 +169,19 @@ span.close {
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%,-200%);
+}
+
+#loginButton {
+	background-color: #1DABDD;
+	width: 100px;
+}
+
+#loginMessage {
+	display: block;
+	margin-top: 30px;
+}
+
+#signupMessage {
+	display: block;
+	margin-top: 30px;
 }
